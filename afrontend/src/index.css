@@ -1,0 +1,366 @@
+
+
+/* colors:1-main:#18191a,2-##282a2f,3-#35383b */
+
+body{
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #18191a;
+    margin: 0px;
+    padding: 0px;
+}
+input[type="file"] {
+  display: none;
+}
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal { display: none; width : 0; height: 0; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+::placeholder {
+    color: rgba(192, 192, 190);
+    opacity: 1; /* Firefox */
+  }
+  .show{
+    width: 470px;
+    height: 540px;
+    background-color: #242526;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 7px;
+    z-index: 100;
+
+
+ }
+  .dontShow{
+    display: none;
+  }
+
+  .showBlur{
+    width: 100%;
+    height: 100%;
+    background-color: #000000a3;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 99;
+ }
+  .dontShowBlur{
+    display: none;
+  }
+
+  .imgParent:hover{
+    background-color: rgb(56 56 56);
+  }
+  .postToggleTrue{
+    color: white;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .postToggleFalse{
+    color: #797979;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .storyToggleTrue{
+    color: #797979;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .storyToggleFalse{
+    color: white;
+    cursor: pointer;
+    margin: 0px;
+  }
+  .showPost{
+    margin-top: 17px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .dontShowPost{
+    display: none;
+  }
+
+  .showStory{
+    margin-top: 17px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+  .dontShowStort{
+    display: none;
+  }
+
+
+
+  .valoDefult{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  .valoDefultDis{
+    display: none;
+  }
+  .valo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+  }
+  .valoDis{
+    display: none;
+  }
+
+
+
+  .lolDefult{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  .lolDefultDis{
+    display: none;
+  }
+  .lol{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+  }
+  .lolDis{
+    display: none;
+  }
+
+
+  .csgoDefult{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  .csgoDefultDis{
+    display: none;
+  }
+  .csgo{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+  }
+  .csgoDis{
+    display: none;
+  }
+
+  .warzDefult{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+  }
+  .warzDefultDis{
+    display: none;
+  }
+  .warz{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+
+  }
+  .warzDis{
+    display: none;
+  }
+  .login{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .loginDis{
+    display: none;
+  }
+  .signup{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .signupDis{
+    display: none;
+  }
+
+  
+  
+  .ASideBarGrandba{
+    position: fixed;
+    left: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    width: 500px;
+    height: 610px;
+  }
+  .ASideBarParent{
+    cursor: pointer;
+    width: 200px;
+  height: 300px;
+  background-color: rgb(36, 37, 38);
+  border-radius: 363px 435px 377px 281px;
+}
+.ASideBar{
+  display: flex;
+  flex-flow: column wrap;
+  place-content: center;
+  width: 200px;
+  height: 300px;
+  border-radius: 363px 435px 377px 281px;
+}
+
+.ASideBar:hover{
+  background-color: rgb(56 56 56);
+}
+
+.contentParent{
+  display: flex;
+  width: 594px;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+  border-right: 1px solid rgb(97 97 97);
+  border-left: 1px solid rgb(97 97 97);
+}
+
+.BSideBarGrandba{
+  position: fixed;
+  right: 0px;
+  display: flex;
+  justify-content: end;
+  width: 500px;
+  height: 610px;
+}
+.BSideBar{
+  overflow: auto;
+    display: flex;
+    flex-direction: column;
+    height: 579px;
+    width: 360px;
+    margin-right: 3px;
+    gap: 15px;
+}
+
+textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: darkgrey;
+}
+
+
+.BSideBar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.BSideBar::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: rgb(51, 51, 51)
+}
+
+
+
+.uploadParent{
+  height: 240px;
+  margin-top: 8px;
+  width: 454px;
+  margin-left: 7px;
+  border: 1px solid rgb(89 89 89);
+  border-radius: 4px;
+}
+.upload{
+  display: flex;
+  place-content: center;
+  flex-wrap: wrap;
+  height: 219px;
+  width: 432px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+.uploadHover{
+  background-color: rgb(51 51 51);
+  height: 219px;
+  width: 432px;
+  margin: 11px;
+  border-radius: 4px;
+}
+.uploadHover:hover .upload{
+  background-color: rgb(88, 88, 88);
+
+}
+.btnSumbitPostParent{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  height: 76px;
+  flex-wrap: wrap;
+}
+.btnSumbitPost{
+  height: 29px;
+  width: 140px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+
+
+.LikeDefultDis{
+  display: none;
+}
+
+.LikeDis{
+  display: none;
+}
