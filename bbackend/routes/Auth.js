@@ -58,18 +58,18 @@ router.post('/login',async (req,res)=>{
 
 
 
-// router.post('/checkAuth',(req,res)=>{
-//     jwt.verify(req.cookies.token,process.env.SECRET_KEY,function(err,decoded){
-//         if(err){
-//             res.sendStatus(500)
-//             console.log("user is not authentcated");
-//         }
-//         else{
-//             res.sendStatus(200)
-//             console.log("user is authentcated from home");
-//         }
-//     })
-// })
+router.post('/checkAuth',(req,res)=>{
+    jwt.verify(req.cookies.token,process.env.SECRET_KEY,function(err,decoded){
+        if(err){
+            res.sendStatus(500)
+            console.log("user is not authentcated");
+        }
+        else{
+            res.sendStatus(200)
+            console.log("user is authentcated from home");
+        }
+    })
+})
 
 
 router.post('/refreshToken',(req,res)=>{

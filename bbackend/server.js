@@ -1,12 +1,16 @@
 const express =require( 'express')
 const mongoose =require( 'mongoose')
 const cors = require('cors')
-const auth =require('./routes/Auth')
-const sendData =require('./routes/SendData')
 const cookieParser = require("cookie-parser")
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
+
+
+//routes require
+const auth =require('./routes/Auth')
+const sendData =require('./routes/SendData')
+const post = require('./routes/Posts')
 //vars
 const app = express()
 const port = 3000
@@ -41,6 +45,7 @@ app.get('/',(req,res,next)=>{
 //middleware Routes
 app.use(auth)
 app.use(sendData)
+app.use(post)
 
 
 

@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import x from '../assets/icons8-x-24 (1).png'
 import profile from '../assets/icons8-user-64 (1).png'
+import axios from "axios";
 
 
 
@@ -10,17 +11,88 @@ import profile from '../assets/icons8-user-64 (1).png'
 
 export default function CreatePost(props){
     const [show,setShow] = useState(true)
-    return(<>
+    const [imgOrVideoUpload,setImgOrVideoUpload]=useState('')    
+    const [imgUrl,setImgUrl] = useState()    
+    const [videoUrl,setVideoUrl] = useState()    
+    const [text,setText] = useState('')    
+
+    function handleImgChagne(e){
+        setImgOrVideoUpload(e.target.files[0])
+    }
+    async function handleUploadImg(e){
+        e.preventDefault()
+        try{
+            const upload = new FormData()
+            upload.append("file",imgOrVideoUpload)
+            upload.append("cloud_name","yaserbahaa")
+            upload.append("upload_preset","zvqf7n1i")
+
+            
+            if(imgOrVideoUpload.type =="image/png"){
+            setText("")
+            console.log("its image and upload is loading");
+            try{
+            const resp = await axios.post('https://api.cloudinary.com/v1_1/yaserbahaa/image/upload',upload)
+            console.log(resp.data.url);
+            const imgUrlStore = resp.data.url
+            
+            if(imgUrlStore){
+            const resp = await axios.post('http://localhost:3000/storePost',{imgUrl:imgUrlStore,text:text},{withCredentials:true})
+            setImgUrl(resp.data.imgUrl)
+            console.log("img have been store it in database ")
+            }   
+            else{
+            console.log("could not store img or video in database ");
+            }
+            }
+            catch(err){
+                console.log("could not upload img or store it in db " +err);
+            }
+            }
+             else if(imgOrVideoUpload.type =="video/mp4"){
+            setText("")
+            console.log("its video and upload is loading");
+            try{
+            const resp = await axios.post('https://api.cloudinary.com/v1_1/yaserbahaa/video/upload',upload)
+            console.log(resp.data.url);
+            const videoUrlStore = resp.data.url
+            
+            if(videoUrlStore){
+            const resp = await axios.post('http://localhost:3000/storePost',{videoUrl:videoUrlStore,text:text},{withCredentials:true})
+            setVideoUrl(resp.data)
+            console.log("video have been store it in database");
+        }   
+        else{
+            console.log("could not store video in database");
+        }
+    }
+    catch(err){
+        console.log("could not upload video" +err);
+    }
+}
+else{
+    console.log("img or video required to upload")
+}
+}
+catch(error){
+    console.log("something worung "+error);   
+}
+}
+
+
+
+
+return(<>
     <div style={{display:'flex',justifyContent:"center",position:"relative",alignContent:"center",flexWrap:"wrap",width:"100%",height:"55px"}}>
     <div className='imgParent' style={{position:"absolute",cursor:"pointer",left:"0px",top:"14px",display:"flex",justifyContent:"center",alignContent:"center",flexWrap:"wrap",borderRadius:"50%",height:"33px",width:"33px",margin:"0px 0px 0px 15px"}}  onClick={()=>{props.set(false);document.body.style.overflow='auto'}}>
         <img src={x} alt=''/>
     </div>
     <div>
-    <h2 className={show ? 'postToggleTrue':'postToggleFalse'} onClick={()=>{setShow(show ? show = show : !show) }}  >post</h2>
+    <h2 className={show ? 'postToggleTrue':'postToggleFalse'} onClick={()=>{setShow(show ? show : !show) }}  >post</h2>
     </div>
     <hr style={{margin:"0px 50px 0px 50px"}}/>
     <div>
-    <h2 className={show ? 'storyToggleTrue':'storyToggleFalse'} onClick={()=>{setShow(show ? !show : show = show)}} >story</h2>
+    <h2 className={show ? 'storyToggleTrue':'storyToggleFalse'} onClick={()=>{setShow(show ? !show : show )}} >story</h2>
     </div>
 
     </div>
@@ -35,21 +107,23 @@ export default function CreatePost(props){
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>name</p>
     </div>
 
-        <form action="" >
+        <form onSubmit={handleUploadImg} >
     <div>
-        <textarea minLength={0} maxLength={425} placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
+        <textarea value={text} onChange={(e)=> setText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
     </div>
     <div className='uploadParent' >
         <div className='uploadHover'>
-        <label className='upload' htmlFor="upload" >
+            {videoUrl ? <video style={{width:'100%',height:"100%"}} src={imgUrl.imgUrl} controls alt=""/> : ""}
+        <label className='upload' >
+            {imgUrl ? <img style={{width:'100%',height:"100%"}} src={imgUrl} alt=""/> : ""}
             Upload Photo/Video
-        <input type="file" name="" id="upload" />
+        <input type="file" accept="video/*,image/*" onChange={handleImgChagne} />
         </label>
         </div>
     </div>
     <div className='btnSumbitPostParent'>
-        <button className='btnSumbitPost'>Sumbit</button>
+        <button type='submit' className='btnSumbitPost'>Sumbit</button>
     </div>
         </form>
 

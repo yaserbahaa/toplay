@@ -21,7 +21,6 @@ export default function Home(){
             try{
                 const resp = await axios.post('http://localhost:3000/refreshToken',{},{withCredentials: true,})
                 console.log("user token has been refreshed");
-                console.log("thats his new token"+resp.data.token); 
                 setTimeout(() => {
                     refreshToken()
                 }, 1000*60*5);

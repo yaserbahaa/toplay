@@ -90,7 +90,7 @@ const login = async(e)=>{
     <div style={{display:"flex" ,flexDirection:"column",width:"310px",height:"335px",position:"absolute",top:"50%",left:"50%",transform:"translate(-50%,-50%)",backgroundColor:"#242526",border:"1px solid rgb(51,51,51)",borderRadius:"11px"}}>
     <div className={signupToggle ? 'loginDis':'login'} >
         <img style={{width:"72px",marginLeft:"123px",marginTop:"8px"}} src={ninja} alt="" />
-            <form onSubmit={login} action="" style={{display:"flex", alignContent:'center',flexWrap:"wrap",flexDirection:"column",gap:"15px",marginTop:"21px"}}>
+            <form onSubmit={login} style={{display:"flex", alignContent:'center',flexWrap:"wrap",flexDirection:"column",gap:"15px",marginTop:"21px"}}>
                 <input type="text" value={usernameLog} onChange={(e)=>{setUsernameLog(e.target.value)}} required minLength={4} maxLength={12} placeholder="username" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}}/>
                 <input type="password" value={passwordLog} onChange={(e)=>{setPasswordLog(e.target.value)}} required minLength={4} maxLength={25} placeholder="password" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}} />
                 <button style={{marginLeft:'116px',marginTop:'10px',width:"86px",backgroundColor:'rgb(131 131 131)',color:"white",borderRadius:'3px',border:'1px solid rgb(51, 51, 51)',cursor:"pointer"}}>Login</button>
@@ -106,7 +106,7 @@ const login = async(e)=>{
 
     <div className={signupToggle ? 'signup':'signupDis'} >
         <img style={{width:"72px",marginLeft:"123px",marginTop:"8px"}} src={ninja} alt="" />
-            <form onSubmit={signup} action="" style={{display:"flex", alignContent:'center',flexWrap:"wrap",flexDirection:"column",gap:"15px",marginTop:"21px"}}>
+            <form onSubmit={signup} style={{display:"flex", alignContent:'center',flexWrap:"wrap",flexDirection:"column",gap:"15px",marginTop:"21px"}}>
                 <input type="text" value={usernameSig} onChange={(e)=>{setUsernameSig(e.target.value)}} required minLength={4} maxLength={12} placeholder="username" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}}/>
                 {/* <input type="email" placeholder="email" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}}/> */}
                 <input type="password" value={passwordSig} onChange={(e)=>{setPasswordSig(e.target.value)}} required minLength={4} maxLength={25} placeholder="password" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}} />
