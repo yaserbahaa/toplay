@@ -6,6 +6,8 @@ require('mongoose-type-url');
 
 
 const postSchema = new mongoose.Schema({
+    username:String,
+    icon:String,
     imgUrl:String,
     videoUrl:String,
     text:String,

@@ -5,13 +5,12 @@ const users =require('../schema/usersSchema.js')
 require('dotenv').config()
 const bcrypt =require("bcrypt")
 
-
 router.post('/signup',async (req,res)=>{
     try{
         if(users.username !== req.body.username){
             const salt = await bcrypt.genSalt(10)    
             const hash = await bcrypt.hash(req.body.password,salt)
-            const userss = await users.create({username:req.body.username,password:hash})
+            const userss = await users.create({username:req.body.username,password:hash,icon:req.body.icon})
             res.json(userss)
             console.log(userss)
             console.log('user created');
@@ -38,7 +37,7 @@ router.post('/login',async (req,res)=>{
                     console.log(err);
                 }
                 else if (succses) {
-                const token = jwt.sign({id:data._id},process.env.SECRET_KEY,{expiresIn: 1000*60*60*24*7*4*360})  
+                const token = jwt.sign({id:data._id,username:data.username,icon:data.icon},process.env.SECRET_KEY,{expiresIn: 1000*60*60*24*7*4*360})  
                 res.cookie("token",token,{httpOnly:true,secure:false,maxAge:1000*60*60*24*7*4*360})
                 console.log('password and username match in db!');
                 res.sendStatus(200)
@@ -79,9 +78,9 @@ router.post('/refreshToken',(req,res)=>{
             console.log("user is not authentcated");
         }
         else{
-            const token = jwt.sign({id:decoded.id},process.env.SECRET_KEY,{expiresIn:1000*60*60*24*7*4*360})
+            const token = jwt.sign({id:decoded.id,username:decoded.username,icon:decoded.icon},process.env.SECRET_KEY,{expiresIn:1000*60*60*24*7*4*360})
             res.cookie("token",token,{httpOnly:true,secure:false,maxAge:1000*60*60*24*7*4*360})
-            res.sendStatus(200)
+            res.json({id:decoded.id,username:decoded.username,icon:decoded.icon})
             console.log("thats his new token "+token);
         }
     })

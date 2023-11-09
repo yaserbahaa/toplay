@@ -15,7 +15,9 @@ const usersSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-
+    icon:{
+        type:String,
+    },
 }
 ,{timestamps: true})
 

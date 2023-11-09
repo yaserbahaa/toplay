@@ -4,10 +4,17 @@ import axios from 'axios'
 
 
 
-export default function ASideBar(){
+export default function ASideBar(props){
       const [show,setShow]=useState(null)
-    //   const [scroll,setScroll]=useState(null)
+        useEffect(()=>{
 
+            // const data = async()=>{
+            //     try{
+            //         const resp = await axios.post
+            //     }
+            // }
+
+        })
 
          return(<>      
         <div className="ASideBarGrandba">
@@ -22,7 +29,7 @@ export default function ASideBar(){
      <div onClick={()=>{setShow(false); document.body.style.overflow='auto'}} className={show ? 'showBlur': 'dontShowBlur'} >
     </div> 
      <div className={show ? 'show': 'dontShow'} >
-         <CreatePost set={setShow}/> 
+         <CreatePost data={props.data} setShow={setShow}/> 
     </div> 
 
 

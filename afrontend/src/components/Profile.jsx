@@ -7,7 +7,7 @@ import axios from "axios";
 
 
  
-export default function Profile(){
+export default function Profile(props){
     const[user,setUser]= useState()
     const Navigate = useNavigate()
     const logout = async()=>{
@@ -21,25 +21,11 @@ export default function Profile(){
             console.log("logout faild");
         }    
     }
-    useEffect(()=>{
-        const userData = async()=>{
-            try{
-                const resp = await axios.get("http://localhost:3000/userData",{withCredentials:true})
-                setUser(resp.data)
-                console.log("user data recived");
-                console.log(resp);
-            }
-            catch{
-                console.log("could not get user data");
-            }
-        }
-        userData()
-    },[])
+
     return(<>
-    <Navbar/>
+    <Navbar tokenData={props.tokenData}/>
     <div style={{marginTop:'58px'}}>
         <h1>profile compont</h1>
-        <h1>{user !==undefined ? user.data.username : ''}</h1>
     <button onClick={logout}>logout</button>
     </div>
     </>)

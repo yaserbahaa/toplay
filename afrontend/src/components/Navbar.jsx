@@ -18,21 +18,20 @@ import profile from '../assets/icons8-user-64 (1).png'
 
 
 
-export default function Navbar(){
+export default function Navbar(props){
     const [valoToggle,setValoToggle]=useState(false)
     const [lolToggle,setLolToggle]=useState(false)
     const [csgoToggle,setCsgoToggle]=useState(false)
     const [warzToggle,setWarzToggle]=useState(false)
-    
     return(<>
     {/* navbar routes */}
 
-    <Routes>
+        <Routes>
+            <Route path={'/lol'} element={"lol"}/>
         {/* <Route path={'/valo'} element={<Valo/>}/>
-        <Route path={'/lol'} element={<Lol/>}/>
         <Route path={'/all'} element={<All/>}/>
         <Route path={'/csgo'} element={<Csgo/>}/>
-        <Route path={'/warz'} element={<Warz/>}/> */}
+    <Route path={'/warz'} element={<Warz/>}/> */}
         {/* <Route path={'/chat'} element={<Chat/>}/> */} 
         {/* <Route path={'/profile'} element={<Profile/>}/> */}
     </Routes>
@@ -64,10 +63,10 @@ export default function Navbar(){
         </div>
     
         <div style={{position:"relative",width:"40px"}}>
-    {/* <Link to={'/lol'}> */}
+    <Link to={'/lol'}>
         <img onClick={()=>{setLolToggle(!lolToggle); setValoToggle(false); setCsgoToggle(false); setWarzToggle(false);}} className={lolToggle ? 'lolDefultDis':'lolDefult'} src={lolDefult} alt="" />
         <img className={lolToggle ? 'lol':'lolDis'} src={lol} alt="" />
-    {/* </Link> */}
+    </Link>
         </div>
 
 
@@ -102,8 +101,7 @@ export default function Navbar(){
                     {/* </Link> */}
 
                  <Link to={'/profile'}>
-
-                <img style={{width:"37px",cursor:"pointer"}} src={profile} alt="" />
+                <img style={{width:"37px",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : ""} alt="" />
                 </Link>
 
         </div>

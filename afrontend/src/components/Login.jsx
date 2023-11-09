@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ninja from '/icons8-ninja-80.png'
+import iconProfile from "../assets/icons8-user-64 (1).png"
 import axios from 'axios'
 import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
@@ -45,6 +46,7 @@ export default function Login(props){
                 const resp = await axios.post('http://localhost:3000/signup',{
                     username:usernameSig,
                     password:passwordSig,
+                    icon:iconProfile,
             })
                 setUsernameSig('')
                 setPasswordSig('')
