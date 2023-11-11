@@ -1,7 +1,7 @@
 import BSideBar from "./components/BSideBar.jsx";
 import ASideBar from "./components/ASideBar.jsx";
 import Navbar from "./components/Navbar";
-import Stores from "./components/Stores";
+import Stories from "./components/Stories";
 import Content from "./components/Content.jsx";
 import axios from 'axios'
 import { useEffect, useState, } from "react";
@@ -17,7 +17,7 @@ export default function Home(props){
     const navigate = useNavigate()    
     return(<>
         <Navbar tokenData={props.tokenData}/>
-        <Stores data={props.data}/>
+        <Stories data={props.data.stories}/>
         <div style={{display:"flex",justifyContent:"center"}}>
         <ASideBar data={props.data}/>
         <Content data={props.data}/>

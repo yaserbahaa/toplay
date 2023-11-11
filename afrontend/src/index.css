@@ -264,8 +264,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   flex-direction: column;
   align-content: center;
   flex-wrap: wrap;
-  border-right: 1px solid rgb(97 97 97);
-  border-left: 1px solid rgb(97 97 97);
+  margin-top: 15px;
 }
 
 .BSideBarGrandba{

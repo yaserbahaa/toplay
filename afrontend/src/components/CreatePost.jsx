@@ -14,9 +14,15 @@ export default function CreatePost(props){
     const [imgOrVideoUpload,setImgOrVideoUpload]=useState('')   
     const [previewUploadImg,SetPreviewUploadImg] = useState('')    
     const [previewUploadVideo,SetPreviewUploadVideo] = useState('')    
-    const [text,setText] = useState('')    
+    const [text,setText] = useState('')   
+    
+    //story upload
+    const [storyImgOrVideoUpload,setStoryImgOrVideoUpload]=useState('')   
+    const [storyPreviewUploadImg,SetStoryPreviewUploadImg] = useState('')    
+    const [storyPreviewUploadVideo,SetStoryPreviewUploadVideo] = useState('')    
+    const [storyText,setStoryText] = useState('')
 
-    // console.log(props.data.currentUser.username);
+
     function handleUploadChagne(e){
         setImgOrVideoUpload(e.target.files[0])
 
@@ -32,18 +38,15 @@ export default function CreatePost(props){
     }
     
 
-
     async function handleUpload(e){
         e.preventDefault()
-        // if(imgOrVideoUpload){
-        //     setText("")
-        //     props.setShow(false)
-        // }
-        // else{
-        //     console.log("upload required");
-        // }
-        setText("")
-        props.setShow(false)
+        if(imgOrVideoUpload){
+            setText("")
+            props.setShow(false)
+        }
+        else{
+            console.log("upload required");
+        }    
         SetPreviewUploadImg("")
         SetPreviewUploadVideo("")
         setImgOrVideoUpload("")
@@ -82,6 +85,91 @@ export default function CreatePost(props){
             
             if(videoUrlStore){
             const resp = await axios.post('http://localhost:3000/storePost',{videoUrl:videoUrlStore,text:text},{withCredentials:true})
+            console.log("video have been store it in database");
+        }   
+        else{
+            console.log("could not store video in database");
+        }
+    }
+        catch(err){
+            console.log("could not upload video" +err);
+        }
+    }
+    else{
+        console.log("img or video required to upload")
+    }
+    }
+    catch(error){
+        console.log("something worung "+error);   
+    }
+    }
+
+    
+    
+    //     story upload
+    
+    
+    function storyHandleUploadChagne(e){
+        setStoryImgOrVideoUpload(e.target.files[0])
+
+        if(e.target.files[0].type == "image/png" || e.target.files[0].type =="image/jpg" || e.target.files[0].type =="image/jpeg" || e.target.files[0].type =="image/gif"){
+            SetStoryPreviewUploadImg(URL.createObjectURL(e.target.files[0]))
+        }
+        else if(e.target.files[0].type=="video/mp4" || e.target.files[0].type =="image/mpeg4" || e.target.files[0].type =="image/mov"){
+            SetStoryPreviewUploadVideo(URL.createObjectURL(e.target.files[0]))
+        }
+        else{
+            console.log("user should upload img or video only");
+        }
+    }
+
+    async function storyHandleUpload(e){
+        e.preventDefault()
+        if(storyImgOrVideoUpload){
+            setStoryText("")
+            props.setShow(false)
+        }
+        else{
+            console.log("upload required");
+        }    
+        SetStoryPreviewUploadImg("")
+        SetStoryPreviewUploadVideo("")
+        setStoryImgOrVideoUpload("")
+        document.body.style.overflow='auto'
+        try{
+            const upload = new FormData()
+            upload.append("file",storyImgOrVideoUpload)
+            upload.append("cloud_name","yaserbahaa")
+            upload.append("upload_preset","zvqf7n1i")
+
+            if(storyImgOrVideoUpload.type =="image/png" || storyImgOrVideoUpload.type =="image/jpg" || storyImgOrVideoUpload.type =="image/jpeg" || storyImgOrVideoUpload.type =="image/gif"){
+            console.log("its image and upload is loading");
+            try{
+            const resp = await axios.post('https://api.cloudinary.com/v1_1/yaserbahaa/image/upload',upload)
+            console.log(resp.data.url);
+            const storyImgUrlStore = resp.data.url
+            
+            if(storyImgUrlStore){
+            const resp = await axios.post('http://localhost:3000/storeStory',{storyImgUrl:storyImgUrlStore,text:text},{withCredentials:true})
+            console.log("img have been store it in database ")
+            }   
+            else{
+            console.log("could not store img or video in database ");
+            }
+            }
+            catch(err){
+                console.log("could not upload img or store it in db " +err);
+            }
+            }
+             else if(storyImgOrVideoUpload.type =="video/mp4" || storyImgOrVideoUpload.type =="image/mpeg4" || storyImgOrVideoUpload.type =="image/mov"){
+            console.log("its video and upload is loading");
+            try{
+            const resp = await axios.post('https://api.cloudinary.com/v1_1/yaserbahaa/video/upload',upload)
+            console.log(resp.data.url);
+            const storyVideoUrlStore = resp.data.url
+            
+            if(storyVideoUrlStore){
+            const resp = await axios.post('http://localhost:3000/storeStory',{storyVideoUrl:storyVideoUrlStore,text:text},{withCredentials:true})
             console.log("video have been store it in database");
         }   
         else{
@@ -151,6 +239,9 @@ return(<>
     </div>
 
 
+
+
+
     <div className={show ? 'dontShowStort':'showStory'}>
     <div style={{display:"flex",paddingLeft:"11px"}}>
     
@@ -160,17 +251,19 @@ return(<>
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.data.currentUsername ? props.data.currentUsername : "user"}</p>
     </div>
 
-        <form action="" >
+        <form onSubmit={storyHandleUpload} >
     <div>
-        <textarea  placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
+        <textarea value={storyText} onChange={(e)=> setStoryText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
     </div>
 
     <div className='uploadParent' >
         <div className='uploadHover'>
-        <label className='upload' htmlFor="upload" >
+        <label className='upload'  >
+        {storyPreviewUploadVideo ? <video style={{width:'100%',height:"100%"}} src={storyPreviewUploadVideo} controls alt=""/> : ""}
+        {storyPreviewUploadImg ? <img style={{width:'100%',height:"100%"}} src={storyPreviewUploadImg} alt=""/> : ""}
             Upload Photo/Video
-        <input type="file" name="" id="upload" />
+        <input type="file" accept="video/*,image/*" onChange={storyHandleUploadChagne} />
         </label>
         </div>
     </div>

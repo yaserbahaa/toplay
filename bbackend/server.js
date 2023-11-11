@@ -11,6 +11,8 @@ require('dotenv').config()
 const auth =require('./routes/Auth')
 const sendData =require('./routes/SendData')
 const post = require('./routes/Posts')
+const story = require('./routes/Story')
+const update = require("./routes/Update")
 //vars
 const app = express()
 const port = 3000
@@ -46,6 +48,9 @@ app.get('/',(req,res,next)=>{
 app.use(auth)
 app.use(sendData)
 app.use(post)
+app.use(story)
+app.use(update)
+
 
 
 

@@ -6,6 +6,7 @@ import Home from './Home'
 import { useEffect, useState } from 'react'
 import Profile from './components/Profile'
 import axios from 'axios'
+import UserProfile from './components/UserProfile'
 
 function App() {
   const [test,setTest]=useState('')
@@ -63,6 +64,7 @@ function App() {
         <Route path='/' element={<Home data={data} tokenData={tokenData}/>}/>
         <Route path='/profile' element={<Profile tokenData={tokenData}/>}/>
         <Route path='*' element={'Back to home page you lost your way'}/>
+        <Route path='/profile/id/:id' element={<UserProfile/>}/>
         </Routes>
     </>
   )

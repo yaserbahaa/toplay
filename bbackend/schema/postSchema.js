@@ -12,6 +12,8 @@ const postSchema = new mongoose.Schema({
     videoUrl:String,
     text:String,
     id:String,
+    like:Number,
+    comment:String,
 },{timestamps: true})
 
 

@@ -5,6 +5,9 @@ const users =require('../schema/usersSchema.js')
 require('dotenv').config()
 const bcrypt =require("bcrypt")
 
+
+
+
 router.post('/signup',async (req,res)=>{
     try{
         if(users.username !== req.body.username){
@@ -78,9 +81,10 @@ router.post('/refreshToken',(req,res)=>{
             console.log("user is not authentcated");
         }
         else{
-            const token = jwt.sign({id:decoded.id,username:decoded.username,icon:decoded.icon},process.env.SECRET_KEY,{expiresIn:1000*60*60*24*7*4*360})
+            const userData = await users.findOne({_id:decoded.id})
+            const token = jwt.sign({id:userData.id,username:userData.username,icon:userData.icon},process.env.SECRET_KEY,{expiresIn:1000*60*60*24*7*4*360})
             res.cookie("token",token,{httpOnly:true,secure:false,maxAge:1000*60*60*24*7*4*360})
-            res.json({id:decoded.id,username:decoded.username,icon:decoded.icon})
+            // res.json({id:decoded.id,username:decoded.username,icon:decoded.icon})
             console.log("thats his new token "+token);
         }
     })
