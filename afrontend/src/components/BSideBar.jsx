@@ -1,109 +1,35 @@
 import profile from '../assets/icons8-user-64 (1).png'
+import "../css/BSideBar.css"
+import { useNavigate } from 'react-router-dom';
 
 
 
 
-export default function BSideBar(){
-    
+export default function BSideBar(props){
+    const friendsData = props.friendsData
+    console.log(friendsData );
+    const navigate = useNavigate()
+    function userProfile(e){
+        const friendId = e.target.getAttribute("data-friendid")
+        console.log(friendId);
+        navigate(`/profile/id/${friendId}`)
+        }
     return(<>
             <div className='BSideBarGrandba'>
             <div className='BSideBar' style={{overflow:"auto",display:"flex",flexDirection:"column",position:"absolute",right:"0px", height:"595px" ,width:"360px",margin:"0px 10px 0px 30px",gap:"15px"}}>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
+            {friendsData ? friendsData.map((friend)=>{
+                return(
+            <div key={friend._id} style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
+            <div className='bSideBarImgCont'>
+                <img className='bSideBarImg' src={friend.friendIcon} data-friendid={friend.friendId} onClick={userProfile} alt="" />
             </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
+            <div className='bSideBarUsernameCont'>
+            <p data-friendid={friend.friendId} onClick={userProfile} style={{fontSize:"12px",fontWeight:'900',color:"white",marginLeft:"10px",cursor:"pointer"}}>{friend.friendUsername}</p>
             </div>
             </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
-            <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-            <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-                <img src={profile} alt="" style={{width:"40px"}}/>
-            </div>
-            <div style={{}}>
-            <p style={{fontSize:"14px",color:"white",marginLeft:"10px"}}>name</p>
-            </div>
-            </div>
+                    )
+            }) : ""}
+
 
         </div>
             </div>

@@ -1,4 +1,5 @@
 
+import "../css/Content.css"
 import profile from '../assets/icons8-user-64 (1).png'
 import photo from '../assets/pxfuel.jpg'
 import LikeDefult from '../assets/icons8-heart-24.png'
@@ -12,30 +13,30 @@ import axios from 'axios'
 
 
 export default function Content(props){
-    const [LikeToggle,setLikeToggle]=useState(false)
-    const [showLike,setLike]=useState()
+    // const [LikeToggle,setLikeToggle]=useState(false)
+    // const [showLike,setLike]=useState()
 
 
     const posts = props.data.posts
     const navigate=useNavigate()
 
 
-    async function like (e){
-        let like = e.target.getAttribute("data-like") 
-        const postId =e.target.getAttribute("data-postid")
-        console.log(like);
-        setLike(showLike => showLike = like + 1)
-        setLikeToggle(!LikeToggle) ;
-        const resp = await axios.patch('http://localhost:3000/likeUpdate',{_id:postId,like:true},{withCredentials: true,})
-    }
-    async function unLike (e){
-        let unLike =e.target.getAttribute("data-unlike")
-        console.log(unLike);
-        unLike -= 1 ;
-        const postId =e.target.getAttribute("data-postid")
-        setLikeToggle(!LikeToggle) 
-        const resp = await axios.patch('http://localhost:3000/likeUpdate',{_id:postId,unLike:true},{withCredentials: true,});
-    }
+    // async function like (e){
+    //     let like = e.target.getAttribute("data-like") 
+    //     const postId =e.target.getAttribute("data-postid")
+    //     console.log(like);
+    //     setLike(showLike => showLike = like + 1)
+    //     setLikeToggle(!LikeToggle) ;
+    //     const resp = await axios.patch('http://localhost:3000/likeUpdate',{_id:postId,like:true},{withCredentials: true,})
+    // }
+    // async function unLike (e){
+    //     let unLike =e.target.getAttribute("data-unlike")
+    //     console.log(unLike);
+    //     unLike -= 1 ;
+    //     const postId =e.target.getAttribute("data-postid")
+    //     setLikeToggle(!LikeToggle) 
+    //     const resp = await axios.patch('http://localhost:3000/likeUpdate',{_id:postId,unLike:true},{withCredentials: true,});
+    // }
 
     function userProifle(e){
     const userId = e.target.getAttribute("data-userid")
@@ -51,24 +52,24 @@ export default function Content(props){
             return(
                 <div key={post._id} className='content' >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
-        <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-            <img data-userid={post.id} onClick={userProifle} src={post.icon} alt="" style={{width:"40px"}}/>
+        <div className='contentImgCont' >
+            <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
         </div>
-        <div >
-        <p data-userid={post.id} onClick={userProifle} style={{fontSize:"14px",color:"white",cursor:"pointer" ,marginLeft:"12px",display:'inline-block'}}>{post.username}</p>
-        <p style={{fontSize:"13px",color:"#939191",marginLeft:"10px",display:'inline-block'}}><span style={{marginRight:"5px"}}>*</span> {"Created At "+post.createdAt}</p>
+        <div style={{display:"flex",alignContent:'center',flexWrap:"wrap"}}>
+        <p data-userid={post.id} onClick={userProifle} className="contentUsername" >{post.username}</p>
+        <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p>
         </div>
         </div>
         <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
-            {post.imgUrl ? <img onDoubleClick={()=>{setLikeToggle(!LikeToggle)}} src={post.imgUrl} alt="" style={{width:"100%",height:"100%"}}/> : <video src={post.videoUrl} style={{width:"100%",height:"100%"}} controls/>}
+            {post.imgUrl ? <img  src={post.imgUrl} alt="" style={{width:"100%",height:"100%"}}/> : <video src={post.videoUrl} style={{width:"100%",height:"100%"}} controls/>}
         </div>
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
-        <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/>
-        <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/>
+        {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
+        {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
         <img src={comment} alt="" style={{cursor:"pointer"}}/>
         </div>
         <div>
-            <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p>
+            {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
         <p style={{color:"white",fontSize:"13px",marginTop:"12px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>

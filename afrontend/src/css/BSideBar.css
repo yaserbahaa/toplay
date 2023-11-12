@@ -1,0 +1,30 @@
+
+
+
+
+
+.bSideBarImgCont{
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgb(89, 91, 93);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+
+.bSideBarImg{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+.bSideBarUsernameCont{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}

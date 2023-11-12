@@ -8,8 +8,8 @@ const usersSchema = new mongoose.Schema({
         index:true,
         unique:true,
         lowercase: true,
-        minlength:4,
-        maxlength:12,
+        minlength:3,
+        maxlength:8,
     },
     password:{
         type:String,

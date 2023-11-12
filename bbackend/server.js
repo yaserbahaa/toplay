@@ -13,6 +13,8 @@ const sendData =require('./routes/SendData')
 const post = require('./routes/Posts')
 const story = require('./routes/Story')
 const update = require("./routes/Update")
+const friends = require("./routes/Friends")
+
 //vars
 const app = express()
 const port = 3000
@@ -50,6 +52,7 @@ app.use(sendData)
 app.use(post)
 app.use(story)
 app.use(update)
+app.use(friends)
 
 
 

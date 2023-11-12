@@ -19,9 +19,9 @@ export default function Home(props){
         <Navbar tokenData={props.tokenData}/>
         <Stories data={props.data.stories}/>
         <div style={{display:"flex",justifyContent:"center"}}>
-        <ASideBar data={props.data}/>
+        <ASideBar tokenData={props.tokenData} data={props.data}/>
         <Content data={props.data}/>
-        <BSideBar data={props.data}/>
+        <BSideBar friendsData={props.friendsData}/>
         </div> 
         
     </>)

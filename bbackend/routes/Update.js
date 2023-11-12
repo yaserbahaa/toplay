@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken')
 const users =require('../schema/usersSchema.js')
 const posts = require('../schema/postSchema')
 const story = require('../schema/storySchema')
+const friends = require('../schema/friendsSchema')
+
 require('dotenv').config()
 
 
@@ -19,6 +21,7 @@ try{
             const data = await users.updateOne({_id:decoded.id},{icon:req.body.iconUrl})
             const postData = await posts.updateMany({id:decoded.id},{icon:req.body.iconUrl})
             const storyData = await story.updateMany({id:decoded.id},{icon:req.body.iconUrl})
+            const friendsData = await friends.updateMany({friendId:decoded.id},{friendIcon:req.body.iconUrl})
 
         }
     })

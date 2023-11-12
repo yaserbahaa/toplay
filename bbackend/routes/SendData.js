@@ -4,12 +4,13 @@ const jwt = require('jsonwebtoken')
 const posts =require('../schema/postSchema')
 const users =require('../schema/usersSchema.js')
 const story = require('../schema/storySchema')
+const friends = require('../schema/friendsSchema')
 require('dotenv').config()
 
 
 
 
-router.post("/data", (req,res)=>{
+router.get("/data", (req,res)=>{
     try{
     jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
             if(err){
@@ -29,7 +30,7 @@ router.post("/data", (req,res)=>{
         }
     })
 
-router.post('/tokenData',async(req,res)=>{
+router.get('/tokenData',async(req,res)=>{
     jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
         if(err){
             res.sendStatus(500)
@@ -46,8 +47,8 @@ router.get("/userProfile/id/:id", async(req,res)=>{
     try{
         const userData = await users.findOne({_id:req.params.id})
         const userPostsData = await posts.find({id:req.params.id})
-        console.log(userData+userPostsData);
-        res.json({userPostsData,userData})
+        const userFriendsData = await friends.find({ownerId:req.params.id})
+        res.json({userPostsData,userData,userFriendsData})
     }
     catch(err){
         console.log("something went wroung when trying to get user data" +err)
@@ -55,6 +56,18 @@ router.get("/userProfile/id/:id", async(req,res)=>{
 })
 
 
+router.get("/userFriends",(req,res)=>{
+    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+        if(err){
+            console.log("user is not auth");
+        }
+        else{
+            const data = await friends.find({ownerId:decoded.id})
+            res.json(data)
+            console.log("friends data send it");
+        }
+    })
+})
 
 
 

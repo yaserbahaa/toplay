@@ -1,3 +1,4 @@
+import "../css/CreatePost.css"
 import { useEffect, useState } from 'react'
 import x from '../assets/icons8-x-24 (1).png'
 import profile from '../assets/icons8-user-64 (1).png'
@@ -210,10 +211,10 @@ return(<>
     <div className={show ? 'showPost':'dontShowPost'}>
     <div style={{display:"flex",paddingLeft:"11px"}}>
     
-    <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-    <img src={props.data.currentIcon ? props.data.currentIcon : ""} alt="" style={{width:"40px"}}/>
+    <div className='createPostImgCont'>
+    <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt=""  className='createPostImg'/>
     </div>
-    <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.data.currentUsername ? props.data.currentUsername : "user"}</p>
+    <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
         <form onSubmit={handleUpload} >
@@ -245,10 +246,10 @@ return(<>
     <div className={show ? 'dontShowStort':'showStory'}>
     <div style={{display:"flex",paddingLeft:"11px"}}>
     
-    <div style={{width:"40px",height:"40px",borderRadius:"50%", border:"1px solid rgb(89 91 93)"}}>
-    <img src={props.data.currentIcon ? props.data.currentIcon : ""} alt="" style={{width:"40px"}}/>
+    <div className='createPostImgCont'>
+    <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt="" className='createPostImg'/>
     </div>
-    <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.data.currentUsername ? props.data.currentUsername : "user"}</p>
+    <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
         <form onSubmit={storyHandleUpload} >

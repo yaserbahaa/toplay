@@ -97,11 +97,11 @@ export default function Navbar(props){
         <div style={{position:"absolute",right:"23px"}}>
         <div style={{display:"flex",gap:"25px",height:"56px",alignContent:"center",flexWrap:"wrap"}}>
                 {/* <Link to={'/chat'}> */}
-                <img style={{width:"37px",cursor:"pointer"}} src={chat} alt="" />
+                <img style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={chat} alt="" />
                     {/* </Link> */}
 
-                 <Link to={'/profile'}>
-                <img style={{width:"37px",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : ""} alt="" />
+                 <Link style={{width:"42px",height:'42px',borderRadius:"50%"}} to={'/profile'}>
+                <img style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : ""} alt="" />
                 </Link>
 
         </div>

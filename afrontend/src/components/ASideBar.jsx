@@ -29,7 +29,7 @@ export default function ASideBar(props){
      <div onClick={()=>{setShow(false); document.body.style.overflow='auto'}} className={show ? 'showBlur': 'dontShowBlur'} >
     </div> 
      <div className={show ? 'show': 'dontShow'} >
-         <CreatePost data={props.data} setShow={setShow}/> 
+         <CreatePost tokenData={props.tokenData} setShow={setShow}/> 
     </div> 
 
 
