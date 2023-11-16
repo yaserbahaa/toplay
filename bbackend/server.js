@@ -40,10 +40,6 @@ mongoose.connect(process.env.MONGODB_URL)
     console.log("database cant run");
 })
 
-app.get('/',(req,res,next)=>{
-    res.send('home')
-
-})
 
 
 //middleware Routes

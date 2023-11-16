@@ -23,6 +23,6 @@ export default function Home(props){
         <Content data={props.data}/>
         <BSideBar friendsData={props.friendsData}/>
         </div> 
-        
+
     </>)
 }

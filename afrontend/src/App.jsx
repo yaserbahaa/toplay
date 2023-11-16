@@ -7,13 +7,24 @@ import { useEffect, useState } from 'react'
 import Profile from './components/Profile'
 import axios from 'axios'
 import UserProfile from './components/UserProfile'
+import Cs2 from './components/games/Cs2'
+import Lol from './components/games/Lol'
+import Valo from './components/games/Valo'
+import Warz from './components/games/Warz'
 
 function App() {
-  const [test,setTest]=useState('')
+    const [routeColor,setRouteColor]=useState("")
   const [data,setData]=useState('')
   const [tokenData,setTokenData]= useState('')
   const [friendsData,setFriendsData] =useState('')
   const navigate = useNavigate()
+  
+
+  const resetScroll =()=>{
+    document.body.style.overflow='auto'
+
+}
+resetScroll()
 
   useEffect(()=>{
     const refreshToken = async() =>{
@@ -62,17 +73,19 @@ function App() {
     tokenData()
     getData()
     friendsData()
-
+    document.body.style.overflow='auto'
 },[])
-  console.log(friendsData);
   return (
     <>
         <Routes>
         <Route path={'/login'} element={<Login />}/>
-        <Route path='/*' element={<Home data={data} tokenData={tokenData} friendsData={friendsData}/>}/>
+        <Route path='/' element={<Home data={data} tokenData={tokenData} friendsData={friendsData}/>}/>
         <Route path='/profile' element={<Profile tokenData={tokenData}/>}/>
-        <Route path='*' element={'Back to home page you lost your way'}/>
-        <Route path='/profile/id/:id' element={<UserProfile/>}/>
+        <Route path='/profile/id/:id' element={<UserProfile />}/>
+        <Route path={'/lol'} element={<Lol data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
+        <Route path={'/valo'} element={<Valo data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
+        <Route path={'/csgo'} element={<Cs2 data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
+        <Route path={'/warz'} element={<Warz data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         </Routes>
     </>
   )

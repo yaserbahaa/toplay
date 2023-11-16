@@ -41,6 +41,8 @@ export default function Content(props){
     function userProifle(e){
     const userId = e.target.getAttribute("data-userid")
     navigate(`/profile/id/${userId}`)
+    document.body.style.overflow='auto'
+
     }
 
     useEffect(()=>{
@@ -51,13 +53,14 @@ export default function Content(props){
     {posts ? posts.map((post) =>{
             return(
                 <div key={post._id} className='content' >
-        <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>
+        <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
         </div>
         <div style={{display:"flex",alignContent:'center',flexWrap:"wrap"}}>
         <p data-userid={post.id} onClick={userProifle} className="contentUsername" >{post.username}</p>
-        <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p>
+        <p className="contentGame">{post.game}</p>
+        {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
         <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
@@ -66,22 +69,22 @@ export default function Content(props){
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
-        <img src={comment} alt="" style={{cursor:"pointer"}}/>
+        {/* <img src={comment} alt="" style={{cursor:"pointer"}}/> */}
         </div>
         <div>
             {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
-        <p style={{color:"white",fontSize:"13px",marginTop:"12px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
+        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
         </div>
         <div>
-            <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p>
+            {/* <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p> */}
         </div>
         <hr style={{margin:"35px 0px 35px 0px",borderColor:'rgb(97 97 97)'}}/>
     
      </div>
     )
-    })
+    }).slice(0,10)
     : ""}
     </div>
             </>)

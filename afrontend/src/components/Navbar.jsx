@@ -24,18 +24,9 @@ export default function Navbar(props){
     const [csgoToggle,setCsgoToggle]=useState(false)
     const [warzToggle,setWarzToggle]=useState(false)
     return(<>
-    {/* navbar routes */}
 
-        <Routes>
-            <Route path={'/lol'} element={"lol"}/>
-        {/* <Route path={'/valo'} element={<Valo/>}/>
-        <Route path={'/all'} element={<All/>}/>
-        <Route path={'/csgo'} element={<Csgo/>}/>
-    <Route path={'/warz'} element={<Warz/>}/> */}
-        {/* <Route path={'/chat'} element={<Chat/>}/> */} 
-        {/* <Route path={'/profile'} element={<Profile/>}/> */}
-    </Routes>
-    <div className="navBar" style={{position:"fixed",top:'0px',left:'0px',padding :"0px",margin:"0px", width:"100%", height:"56px",display:"flex",alignContent:"center",backgroundColor:"#242526",borderBottom: "1px solid #333333",flexWrap: "wrap"}}>
+
+    <div className="navBar" style={{zIndex:"1000",position:"fixed",top:'0px',left:'0px',padding :"0px",margin:"0px", width:"100%", height:"56px",display:"flex",alignContent:"center",backgroundColor:"#242526",borderBottom: "1px solid #333333",flexWrap: "wrap"}}>
         
     <div style={{display:"flex",gap:"10px",alignContent:"center",flexWrap:"wrap",height:"56px"}}>
     <div className="icon" style={{}}>
@@ -55,42 +46,42 @@ export default function Navbar(props){
     <div style={{display:"flex",position:"absolute",top:'50%',left:"50%", transform: "translate(-50%,-50%)",gap:"75px" ,color:"white"}}>
 
 
-        <div style={{position:"relative",width:"40px"}}>
-    {/* <Link to={'/valo'}> */}
-        <img onClick={()=>{ setValoToggle(!valoToggle); setLolToggle(false); setCsgoToggle(false); setWarzToggle(false);}} className={valoToggle ? 'valoDefultDis':'valoDefult'} src={valoDefult} alt="" />
-        <img className={valoToggle ? 'valo':'valoDis'} src={valo} alt="" />
-    {/* </Link> */}
+        <div  style={{position:"relative",width:"40px"}}>
+    <Link to={'/valo'} >
+        <img  className={props.routeColor == "valo" ? 'valoDefultDis':'valoDefult'} src={valoDefult} alt="" />
+        <img className={props.routeColor == "valo" ? 'valo':'valoDis'} src={valo} alt="" />
+    </Link>
         </div>
     
         <div style={{position:"relative",width:"40px"}}>
     <Link to={'/lol'}>
-        <img onClick={()=>{setLolToggle(!lolToggle); setValoToggle(false); setCsgoToggle(false); setWarzToggle(false);}} className={lolToggle ? 'lolDefultDis':'lolDefult'} src={lolDefult} alt="" />
-        <img className={lolToggle ? 'lol':'lolDis'} src={lol} alt="" />
+        <img className={props.routeColor == "lol" ? 'lolDefultDis':'lolDefult'} src={lolDefult} alt="" />
+        <img className={props.routeColor == "lol" ? 'lol':'lolDis'} src={lol} alt="" />
     </Link>
         </div>
 
 
 
         <div>
-    {/* <Link to={'/all'}> */}
-        <h3>all</h3>
-    {/* </Link> */}
+    <Link style={{textDecoration:"none",color:"white"}} to={'/'}>
+        <h3 style={{cursor:"pointer"}}>All</h3>
+    </Link>
         </div>
 
 
         <div style={{position:"relative",width:"40px"}}>
-    {/* <Link to={'/csgo'}> */}
-        <img onClick={()=>{setCsgoToggle(!csgoToggle); setValoToggle(false); setLolToggle(false); setWarzToggle(false);}} className={csgoToggle ? 'csgoDefultDis':'csgoDefult'} src={csgoDefult} alt="" />
-        <img className={csgoToggle ? 'csgo':'csgoDis'} src={csgo} alt="" />
-    {/* </Link> */}
+    <Link to={'/csgo'}>
+        <img className={props.routeColor == "csgo2" ? 'csgoDefultDis':'csgoDefult'} src={csgoDefult} alt="" />
+        <img className={props.routeColor == "csgo2" ? 'csgo':'csgoDis'} src={csgo} alt="" />
+    </Link>
         </div>
 
 
         <div style={{position:"relative",width:"40px"}}>
-    {/* <Link to={'/warz'}> */}
-        <img onClick={()=>{setWarzToggle(!warzToggle); setLolToggle(false); setCsgoToggle(false); setValoToggle(false);}} className={warzToggle ? 'warzDefultDis':'warzDefult'} src={warzDefult} alt="" />
-        <img className={warzToggle ? 'warz':'warzDis'} src={warz} alt="" />
-    {/* </Link> */}
+    <Link to={'/warz'}>
+        <img className={props.routeColor == "warz" ? 'warzDefultDis':'warzDefult'} src={warzDefult} alt="" />
+        <img className={props.routeColor == "warz" ? 'warz':'warzDis'} src={warz} alt="" />
+    </Link>
         </div>
 
         </div>
@@ -101,7 +92,7 @@ export default function Navbar(props){
                     {/* </Link> */}
 
                  <Link style={{width:"42px",height:'42px',borderRadius:"50%"}} to={'/profile'}>
-                <img style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : ""} alt="" />
+                <img onClick={()=>{document.body.style.overflow='auto'}} style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : profile} alt="" />
                 </Link>
 
         </div>

@@ -29,6 +29,78 @@ router.get("/data", (req,res)=>{
             console.log("could not send data "+err);
         }
     })
+router.get("/dataLol", (req,res)=>{
+    try{
+    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+            if(err){
+                console.log("could not send data to client bec"+err);
+                res.sendStatus(500)
+            }
+            else{
+                const postData = await posts.find({game:"lol"}).sort({createdAt:-1})
+                res.json({posts:postData,currentUsername:decoded.username,currentIcon:decoded.icon})
+            }
+        })
+    }
+        catch(err){
+            res.sendStatus(500)
+            console.log("could not send data "+err);
+        }
+    })
+    router.get("/dataValorant", (req,res)=>{
+        try{
+        jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+                if(err){
+                    console.log("could not send data to client bec"+err);
+                    res.sendStatus(500)
+                }
+                else{
+                    const postData = await posts.find({game:"valorant"}).sort({createdAt:-1})
+                    res.json({posts:postData,currentUsername:decoded.username,currentIcon:decoded.icon})
+                }
+            })
+        }
+            catch(err){
+                res.sendStatus(500)
+                console.log("could not send data "+err);
+            }
+        })
+        router.get("/dataCsgo2", (req,res)=>{
+            try{
+            jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+                    if(err){
+                        console.log("could not send data to client bec"+err);
+                        res.sendStatus(500)
+                    }
+                    else{
+                        const postData = await posts.find({game:"csgo2"}).sort({createdAt:-1})
+                        res.json({posts:postData,currentUsername:decoded.username,currentIcon:decoded.icon})
+                    }
+                })
+            }
+                catch(err){
+                    res.sendStatus(500)
+                    console.log("could not send data "+err);
+                }
+            })
+            router.get("/dataWarz", (req,res)=>{
+                try{
+                jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+                        if(err){
+                            console.log("could not send data to client bec"+err);
+                            res.sendStatus(500)
+                        }
+                        else{
+                            const postData = await posts.find({game:"warz"}).sort({createdAt:-1})
+                            res.json({posts:postData,currentUsername:decoded.username,currentIcon:decoded.icon})
+                        }
+                    })
+                }
+                    catch(err){
+                        res.sendStatus(500)
+                        console.log("could not send data "+err);
+                    }
+                })
 
 router.get('/tokenData',async(req,res)=>{
     jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){

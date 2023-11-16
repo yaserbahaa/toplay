@@ -15,7 +15,16 @@ export default function CreatePost(props){
     const [imgOrVideoUpload,setImgOrVideoUpload]=useState('')   
     const [previewUploadImg,SetPreviewUploadImg] = useState('')    
     const [previewUploadVideo,SetPreviewUploadVideo] = useState('')    
-    const [text,setText] = useState('')   
+    const [text,setText] = useState('')    
+    const [game,setGame] = useState('all')   
+    const [lol,setLol] = useState(null)   
+    const [valorant,setValorant] = useState(null)   
+    const [all,setAll] = useState(true)   
+    const [csgo2,setCsgo2] = useState(null)   
+    const [warz,setWarz] = useState(null)   
+
+
+
     
     //story upload
     const [storyImgOrVideoUpload,setStoryImgOrVideoUpload]=useState('')   
@@ -43,7 +52,9 @@ export default function CreatePost(props){
         e.preventDefault()
         if(imgOrVideoUpload){
             setText("")
+            setGame("")
             props.setShow(false)
+            document.body.style.overflow='auto'
         }
         else{
             console.log("upload required");
@@ -51,7 +62,6 @@ export default function CreatePost(props){
         SetPreviewUploadImg("")
         SetPreviewUploadVideo("")
         setImgOrVideoUpload("")
-        document.body.style.overflow='auto'
         try{
             const upload = new FormData()
             upload.append("file",imgOrVideoUpload)
@@ -66,7 +76,7 @@ export default function CreatePost(props){
             const imgUrlStore = resp.data.url
             
             if(imgUrlStore){
-            const resp = await axios.post('http://localhost:3000/storePost',{imgUrl:imgUrlStore,text:text},{withCredentials:true})
+            const resp = await axios.post('http://localhost:3000/storePost',{imgUrl:imgUrlStore,text:text,game:game},{withCredentials:true})
             console.log("img have been store it in database ")
             }   
             else{
@@ -85,7 +95,7 @@ export default function CreatePost(props){
             const videoUrlStore = resp.data.url
             
             if(videoUrlStore){
-            const resp = await axios.post('http://localhost:3000/storePost',{videoUrl:videoUrlStore,text:text},{withCredentials:true})
+            const resp = await axios.post('http://localhost:3000/storePost',{videoUrl:videoUrlStore,text:text,game:game},{withCredentials:true})
             console.log("video have been store it in database");
         }   
         else{
@@ -127,8 +137,10 @@ export default function CreatePost(props){
     async function storyHandleUpload(e){
         e.preventDefault()
         if(storyImgOrVideoUpload){
+            setGame("")
             setStoryText("")
             props.setShow(false)
+            document.body.style.overflow='auto'
         }
         else{
             console.log("upload required");
@@ -136,7 +148,6 @@ export default function CreatePost(props){
         SetStoryPreviewUploadImg("")
         SetStoryPreviewUploadVideo("")
         setStoryImgOrVideoUpload("")
-        document.body.style.overflow='auto'
         try{
             const upload = new FormData()
             upload.append("file",storyImgOrVideoUpload)
@@ -191,7 +202,7 @@ export default function CreatePost(props){
     }
 
 
-
+console.log(game);
 return(<>
     <div style={{display:'flex',justifyContent:"center",position:"relative",alignContent:"center",flexWrap:"wrap",width:"100%",height:"55px"}}>
     <div className='imgParent' style={{position:"absolute",cursor:"pointer",left:"0px",top:"14px",display:"flex",justifyContent:"center",alignContent:"center",flexWrap:"wrap",borderRadius:"50%",height:"33px",width:"33px",margin:"0px 0px 0px 15px"}}  onClick={()=>{props.setShow(false);document.body.style.overflow='auto'}}>
@@ -209,33 +220,41 @@ return(<>
 
 
     <div className={show ? 'showPost':'dontShowPost'}>
-    <div style={{display:"flex",paddingLeft:"11px"}}>
-    
+
+    <div style={{display:"flex",paddingLeft:"11px",width: "459px"}}>
     <div className='createPostImgCont'>
     <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt=""  className='createPostImg'/>
     </div>
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
-        <form onSubmit={handleUpload} >
     <div>
-        <textarea value={text} onChange={(e)=> setText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
+        <textarea value={text} onChange={(e)=> setText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"378px",marginTop:"13px",paddingLeft:"14px",height:'102px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
+    <div className="createPostGamesCont">
+        <button onClick={()=>{setGame("lol") ;setLol(true);setValorant(false);setAll(false);setCsgo2(false);setWarz(false)}} className={lol ? "createPostlol":"createPostGamesBtn"}>lol</button>
+        <button onClick={()=>{setGame("valorant");setLol(false);setValorant(true);setAll(false);setCsgo2(false);setWarz(false)}} className={valorant ? "createPostvalorant":"createPostGamesBtn"}>valorant</button>
+        <button onClick={()=>{setGame("all");setLol(false);setValorant(false);setAll(true);setCsgo2(false);setWarz(false)}} className={all ? "createPostall":"createPostGamesBtn"}>All</button>
+        <button onClick={()=>{setGame("csgo2");setLol(false);setValorant(false);setAll(false);setCsgo2(true);setWarz(false)}} className={csgo2 ? "createPostcsgo2":"createPostGamesBtn"}>csgo2</button>
+        <button onClick={()=>{setGame("warz");setLol(false);setValorant(false);setAll(false);setCsgo2(false);setWarz(true)}} className={warz ? "createPostwarz":"createPostGamesBtn"}>warzone </button> 
+    </div>
     </div>
     <div className='uploadParent' >
         <div className='uploadHover'>
-        <label className='upload' >
-            {previewUploadVideo ? <video style={{width:'100%',height:"100%"}} src={previewUploadVideo} controls alt=""/> : ""}
-            {previewUploadImg ? <img style={{width:'100%',height:"100%"}} src={previewUploadImg} alt=""/> : ""}
+        <div className={previewUploadVideo||previewUploadImg ? "previewUpload":'previewUploadNone'}>
+            <img onClick={()=>{SetPreviewUploadImg("");SetPreviewUploadVideo("");setImgOrVideoUpload('')}} style={{position:"absolute",cursor:"pointer",top:"4px",left:"4px",zIndex:"100"}} src={x} alt="" />
+        {previewUploadVideo ? <video style={{width:'100%',height:"100%"}} src={previewUploadVideo} controls alt=""/> : ""}
+        {previewUploadImg ? <img style={{width:'100%',height:"100%"}} src={previewUploadImg} alt=""/> : ""}
+            </div>
+        <label className={previewUploadVideo||previewUploadImg ? "uploadNone":'upload2'}  >
             Upload Photo/Video
         <input type="file" accept="video/*,image/*" onChange={handleUploadChagne} />
         </label>
         </div>
     </div>
     <div className='btnSumbitPostParent'>
-        <button type='submit' className='btnSumbitPost'>Sumbit</button>
+        <button onClick={handleUpload}  className='btnSumbitPost'>Sumbit</button>
     </div>
-        </form>
 
     </div>
 
@@ -244,34 +263,35 @@ return(<>
 
 
     <div className={show ? 'dontShowStort':'showStory'}>
-    <div style={{display:"flex",paddingLeft:"11px"}}>
-    
+
+    <div style={{display:"flex",paddingLeft:"11px" ,width: "459px"}}>
     <div className='createPostImgCont'>
     <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt="" className='createPostImg'/>
     </div>
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
-        <form onSubmit={storyHandleUpload} >
     <div>
-        <textarea value={storyText} onChange={(e)=> setStoryText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"450px",marginTop:"16px",paddingLeft:"14px",height:'75px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
+        <textarea value={storyText} onChange={(e)=> setStoryText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"452px",marginTop:"13px",paddingLeft:"14px",height:'102px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
     </div>
 
     <div className='uploadParent' >
         <div className='uploadHover'>
-        <label className='upload'  >
+            <div className={storyPreviewUploadVideo||storyPreviewUploadImg ? "previewUpload":'previewUploadNone'}>
+            <img onClick={()=>{SetStoryPreviewUploadImg("");SetStoryPreviewUploadVideo("");setStoryImgOrVideoUpload('')}} style={{position:"absolute",cursor:"pointer",top:"4px",left:"4px",zIndex:"100"}} src={x} alt="" />
         {storyPreviewUploadVideo ? <video style={{width:'100%',height:"100%"}} src={storyPreviewUploadVideo} controls alt=""/> : ""}
         {storyPreviewUploadImg ? <img style={{width:'100%',height:"100%"}} src={storyPreviewUploadImg} alt=""/> : ""}
+            </div>
+        <label className={storyPreviewUploadVideo||storyPreviewUploadImg ? "uploadNone":'upload2'}  >
             Upload Photo/Video
         <input type="file" accept="video/*,image/*" onChange={storyHandleUploadChagne} />
         </label>
         </div>
     </div>
-    <div className='btnSumbitPostParent'>
-        <button className='btnSumbitPost'>Sumbit</button>
+    <div className='creatPostStoryBtnParent'>
+        <button onClick={storyHandleUpload} className='btnSumbitPost'>Sumbit</button>
     </div>
-        </form>
     </div>
 
 

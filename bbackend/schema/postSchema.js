@@ -14,6 +14,7 @@ const postSchema = new mongoose.Schema({
     id:String,
     like:Number,
     comment:String,
+    game:String
 },{timestamps: true})
 
 

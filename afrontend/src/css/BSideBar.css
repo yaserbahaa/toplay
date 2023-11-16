@@ -3,6 +3,34 @@
 
 
 
+
+.BSideBar{
+    width: 360px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 20px;
+    height: 595px;
+    margin: 0px 10px 0px 30px;
+    gap: 15px;
+}
+
+.bSideBarTilteParent{
+    width: 100%;
+    height: 55px;
+    border: 1px solid #282828;
+    margin-bottom: 11px;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+}
+.bSideBarTilte{
+    color: white;
+    font-weight: 900;
+    font-size: 23px;
+    margin: 0px 0px 20px 0px;}
+
 .bSideBarImgCont{
     width: 42px;
     height: 42px;

@@ -15,12 +15,12 @@ router.post('/storePost',async(req,res)=>{
           console.log('user is not auth');
         }
         else if(req.body.imgUrl) {
-          const data = await posts.create({imgUrl:req.body.imgUrl,text:req.body.text,like:0,comment:0,id:decoded.id,username:decoded.username,icon:decoded.icon})
+          const data = await posts.create({imgUrl:req.body.imgUrl,text:req.body.text,like:0,comment:0,game:req.body.game,id:decoded.id,username:decoded.username,icon:decoded.icon})
           console.log(data);
           console.log("img stored in db");
         }
         else if(req.body.videoUrl) {
-          const data = await posts.create({videoUrl:req.body.videoUrl,text:req.body.text,like:0,comment:0,id:decoded.id,username:decoded.username,icon:decoded.icon})
+          const data = await posts.create({videoUrl:req.body.videoUrl,text:req.body.text,like:0,comment:0,game:req.body.game,id:decoded.id,username:decoded.username,icon:decoded.icon})
           console.log(data);
           console.log("video stored in db");
         }

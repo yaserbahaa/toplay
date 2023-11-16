@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import Navbar from './Navbar';
  
 
 
@@ -35,6 +36,7 @@ export default function UserProfile(){
 UserProfile()
 },[])
     return(<>
+    <Navbar/>
         <h1>userprofile</h1>
         <button onClick={addFriend}>add friend</button>
     </>)

@@ -1,30 +1,36 @@
 import { useEffect, useRef, useState } from "react"
+import "../css/Content.css"
+import "../css/ASideBar.css"
+
 import CreatePost from "./CreatePost"
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function ASideBar(props){
       const [show,setShow]=useState(null)
-        useEffect(()=>{
+      const navigate =useNavigate()
 
-            // const data = async()=>{
-            //     try{
-            //         const resp = await axios.post
-            //     }
-            // }
 
-        })
+      function profile(){
+          navigate("/profile")
+      }
 
          return(<>      
         <div className="ASideBarGrandba">
-        <div onClick={()=>{setShow(true) ; document.body.style.overflow='hidden' }} className="ASideBarParent" style={{borderTopLeftRadius:"363px",borderTopRightRadius:"435px",borderBottomRightRadius:"377px",borderBottomLeftRadius:"281px",BorderRadius:'377px 281px 363px 435px',}}>
-        <div className="ASideBar" style={{borderTopLeftRadius:"363px",borderTopRightRadius:"435px",borderBottomRightRadius:"377px",borderBottomLeftRadius:"281px",BorderRadius:'377px 281px 363px 435px',}}>
-        <h1 style={{color:"#585858"}}>Post</h1>
+        <div className="ASideBarParent" >
+        <div className="ASideBar" >
+        <div className='ASideBartImgCont'>
+            <img className="ASideBarImg" onClick={profile} src={props.tokenData.icon} alt="" />
+        </div>
+        <p className="aSideBarUsername" onClick={profile}>{props.tokenData.username}</p>
+        </div>
+        <div className="aSideBarUploadParent"> 
+            <button className="aSideBarUpload" onClick={()=>{setShow(true) ; document.body.style.overflow='hidden' }}>Post / Story</button>
         </div>
         </div>
         </div>  
-
 
      <div onClick={()=>{setShow(false); document.body.style.overflow='auto'}} className={show ? 'showBlur': 'dontShowBlur'} >
     </div> 

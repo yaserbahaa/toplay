@@ -79,7 +79,15 @@ export default function Profile(props){
             console.log("logout faild");
         }    
     }
+    const resetScroll =()=>{
+        document.body.style.overflow='auto'
+        console.log("hehe");
 
+    }
+    resetScroll()
+    useEffect(()=>{
+    },[])
+    
     return(<>
     <Navbar tokenData={props.tokenData}/>
     <div style={{marginTop:'58px'}}>

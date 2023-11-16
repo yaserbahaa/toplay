@@ -1,0 +1,70 @@
+
+
+.storyOff {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    top: 0px;
+    background-color:#18191a;
+}
+
+.showStoryCont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100001;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+.showStoryIconUsernameCont{
+    width: 100%;
+    height: 73px;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    gap: 9px;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.showStoryIconCont{
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-left: 15px;
+}
+.ShowStoryIcon{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1000000;
+    cursor: pointer;
+
+}
+
+.showStoryUsername{
+    height: 100%;
+    margin: 0px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    font-weight: 900;
+    font-size: 12px;
+    cursor: pointer;
+}
+.showStoryImg{
+    width: 450px;
+    height: 700px;
+    border-radius: 9px;
+    object-fit: fill;
+}
+.showStoryVideo{
+    width: 450px;
+    height: 700px;
+    border-radius: 9px;
+    object-fit: fill;
+}

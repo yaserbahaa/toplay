@@ -16,7 +16,10 @@ export default function BSideBar(props){
         }
     return(<>
             <div className='BSideBarGrandba'>
-            <div className='BSideBar' style={{overflow:"auto",display:"flex",flexDirection:"column",position:"absolute",right:"0px", height:"595px" ,width:"360px",margin:"0px 10px 0px 30px",gap:"15px"}}>
+            <div className='BSideBar' >
+                <div className='bSideBarTilteParent'>
+                    <p className='bSideBarTilte'>Your Friends</p>
+                </div>
             {friendsData ? friendsData.map((friend)=>{
                 return(
             <div key={friend._id} style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" }}>

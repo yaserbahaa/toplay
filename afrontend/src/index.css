@@ -229,34 +229,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 
   
   
-  .ASideBarGrandba{
-    position: fixed;
-    left: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    width: 500px;
-    height: 610px;
-  }
-  .ASideBarParent{
-    cursor: pointer;
-    width: 200px;
-  height: 300px;
-  background-color: rgb(36, 37, 38);
-  border-radius: 363px 435px 377px 281px;
-}
-.ASideBar{
-  display: flex;
-  flex-flow: column wrap;
-  place-content: center;
-  width: 200px;
-  height: 300px;
-  border-radius: 363px 435px 377px 281px;
-}
-
-.ASideBar:hover{
-  background-color: rgb(56 56 56);
-}
+  
 
 .contentParent{
   display: flex;
@@ -310,13 +283,12 @@ textarea::-webkit-scrollbar-thumb {
 
 .uploadParent{
   height: 240px;
-  margin-top: 8px;
   width: 454px;
   margin-left: 7px;
   border: 1px solid rgb(89 89 89);
   border-radius: 4px;
 }
-.upload{
+.upload2{
   display: flex;
   place-content: center;
   flex-wrap: wrap;
@@ -343,6 +315,7 @@ textarea::-webkit-scrollbar-thumb {
   justify-content: center;
   height: 76px;
   flex-wrap: wrap;
+  margin-top: 15px;
 }
 .btnSumbitPost{
   height: 29px;

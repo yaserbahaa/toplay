@@ -22,13 +22,13 @@
 .contentUsername{
     display: flex;
     font-size: 12px;
-    width: 170px;
     font-weight: 900;
     color: white;
     cursor: pointer;
     margin-left: 12px;
     align-content: space-around;
     flex-wrap: wrap;
+    margin-right: 100px;
 }
 .ContentCreatedAt{
     font-size: 11px;
@@ -36,4 +36,22 @@
     display: flex;
     align-content:center;
     flex-wrap: wrap;
+    position: absolute;
+    right: 5px;
+    top: 3px;
+}
+
+
+
+.contentGame{
+    font-size: 13px;
+    font-weight: 900;
+    color: rgb(255 255 255);
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    position: absolute;
+    right: 20px;
+    top: 16px;
+    margin: 0px;
 }
