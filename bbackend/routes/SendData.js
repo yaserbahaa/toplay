@@ -20,7 +20,8 @@ router.get("/data", (req,res)=>{
             else{
                 const postData = await posts.find().sort({createdAt:-1})
                 const storyData = await story.find().sort({createdAt:-1})
-                res.json({posts:postData,stories:storyData,currentUsername:decoded.username,currentIcon:decoded.icon})
+                const userData = await users.findOne({_id:decoded.id})
+                res.json({posts:postData,stories:storyData,currentUsername:userData.username,currentIcon:userData.icon})
             }
         })
     }
@@ -110,7 +111,22 @@ router.get('/tokenData',async(req,res)=>{
         }
         else{
             const data =await users.findOne({_id:decoded.id})
-            res.json({id:decoded.id,username:data.username,icon:data.icon})
+            const friendsData =await friends.find({ownerId:decoded.id}).sort({createdAt:-1})
+            res.json({id:decoded.id,username:data.username,icon:data.icon,cover:data.cover,friendsData:friendsData})
+        }
+    })
+})
+
+
+router.get("/ownerProfileData", async(req,res)=>{
+    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+        if(err){
+            res.sendStatus(500)
+            console.log("user is not authentcated");
+        }
+        else{
+            const postData =await posts.find({id:decoded.id}).sort({createdAt:-1})
+            res.json(postData)         
         }
     })
 })
@@ -118,8 +134,8 @@ router.get('/tokenData',async(req,res)=>{
 router.get("/userProfile/id/:id", async(req,res)=>{
     try{
         const userData = await users.findOne({_id:req.params.id})
-        const userPostsData = await posts.find({id:req.params.id})
-        const userFriendsData = await friends.find({ownerId:req.params.id})
+        const userPostsData = await posts.find({id:req.params.id}).sort({createdAt:-1})
+        const userFriendsData = await friends.find({ownerId:req.params.id}).sort({createdAt:-1})
         res.json({userPostsData,userData,userFriendsData})
     }
     catch(err){
@@ -134,7 +150,7 @@ router.get("/userFriends",(req,res)=>{
             console.log("user is not auth");
         }
         else{
-            const data = await friends.find({ownerId:decoded.id})
+            const data = await friends.find({ownerId:decoded.id}).sort({createdAt:-1})
             res.json(data)
             console.log("friends data send it");
         }

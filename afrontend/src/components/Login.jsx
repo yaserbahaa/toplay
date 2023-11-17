@@ -47,6 +47,7 @@ export default function Login(props){
                     username:usernameSig,
                     password:passwordSig,
                     icon:iconProfile,
+                    cover:iconProfile
             })
                 setUsernameSig('')
                 setPasswordSig('')

@@ -23,7 +23,8 @@ router.post("/addFriend", async(req,res)=>{
                 console.log("friend already added");
             }
                 else{
-                    const friendAdd = await friends.create({ownerId:decoded.id,ownerUsername:decoded.username,friendId:friend._id,friendUsername:friend.username,friendIcon:friend.icon})
+                    const userData = await users.findOne({_id:decoded.id})
+                    const friendAdd = await friends.create({ownerId:decoded.id,ownerUsername:userData.username,friendId:friend._id,friendUsername:friend.username,friendIcon:friend.icon})
                     console.log("friend added successfully " +friendAdd);
                     res.sendStatus(200)
                 }

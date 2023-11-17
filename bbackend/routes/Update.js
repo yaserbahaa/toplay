@@ -18,18 +18,31 @@ try{
             console.log("user is not auth");
         }
         else{
-            const data = await users.updateOne({_id:decoded.id},{icon:req.body.iconUrl})
-            const postData = await posts.updateMany({id:decoded.id},{icon:req.body.iconUrl})
-            const storyData = await story.updateMany({id:decoded.id},{icon:req.body.iconUrl})
-            const friendsData = await friends.updateMany({friendId:decoded.id},{friendIcon:req.body.iconUrl})
+            await users.updateOne({_id:decoded.id},{icon:req.body.iconUrl})
+            await posts.updateMany({id:decoded.id},{icon:req.body.iconUrl})
+            await story.updateMany({id:decoded.id},{icon:req.body.iconUrl})
+            await friends.updateMany({friendId:decoded.id},{friendIcon:req.body.iconUrl})
 
         }
     })
 }catch{
     console.log("could not update icon");
 }
-
 })
+router.patch("/updateCover",async(req,res)=>{
+    try{
+        jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+            if(err){
+                console.log("user is not auth");
+            }
+            else{
+                const data = await users.updateOne({_id:decoded.id},{cover:req.body.coverUrl})
+            }
+        })
+    }catch{
+        console.log("could not update icon");
+    }
+    })
 
 router.patch("/likeUpdate",async(req,res)=>{
 

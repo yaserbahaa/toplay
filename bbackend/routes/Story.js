@@ -2,6 +2,8 @@ const express =require( 'express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const story = require('../schema/storySchema')
+const users =require('../schema/usersSchema.js')
+
 require('dotenv').config()
 
 
@@ -15,10 +17,11 @@ router.post("/storeStory",(req,res)=>{
         else{
         try{
             if(req.body.storyImgUrl){
-            const data =await story.create({storyImgUrl:req.body.storyImgUrl,text:req.body.text,id:decoded.id,username:decoded.username,icon:decoded.icon})
+            const userData = await users.findOne({_id:decoded.id})
+            const data =await story.create({storyImgUrl:req.body.storyImgUrl,text:req.body.text,id:decoded.id,username:userData.username,icon:userData.icon})
             console.log(data);
             }else if(req.body.storyVideoUrl){
-                const data =await story.create({storyVideoUrl:req.body.storyVideoUrl,text:req.body.text,id:decoded.id,username:decoded.username,icon:decoded.icon})
+                const data =await story.create({storyVideoUrl:req.body.storyVideoUrl,text:req.body.text,id:decoded.id,username:userData.username,icon:userData.icon})
                 console.log(data);
             }
             else{console.log("cant find img url or video url");}

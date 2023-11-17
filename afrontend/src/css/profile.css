@@ -1,0 +1,219 @@
+
+
+
+.profileHeader{
+    background-color: rgb(67 64 64 / 44%);
+    display: flex;
+    flex-direction: column;
+    height: 642px;
+    margin-top: 58px;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.profileCoverCont{
+    width: 79%;
+    height: 71%;
+    border-radius: 7px;
+
+}
+
+.profileCover{
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    cursor: pointer;
+
+}
+
+.profileImgUsernameContParent{
+    width: 79%;
+    display: flex;
+    justify-content: center;
+}
+
+.profileImgUsernameCont{
+    height: 111px;
+    position: relative;
+    width: 95%;
+    border-bottom: 1px solid #3b3b3b
+}
+
+.profileImgCont{
+    width: 168px;
+    height: 168px;
+    position: absolute;
+    top: -77px;
+    border: 3px solid rgb(36, 37, 38);
+    border-radius: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.profileImg{
+    width: 168px;
+    height: 168px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profileUsernameCont{
+    width: fit-content;
+    height: 100%;
+    margin-left: 192px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.profileUsername{
+    margin: 0px;
+    color: white;
+    font-size: 33px;
+    font-weight: 900;
+}
+
+.profileOptionsContParent{
+    height: 73px;
+    width: 79%;
+    display: flex;
+    justify-content: center;
+}
+
+.profileOptionsCont{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.profileOptionsBtn{
+    border: none;
+    color: white;
+    margin-left: 20px;
+    cursor:pointer;
+    background-color: rgb(67 64 64 /0%);
+}
+
+
+.profileBody{
+    width: 100%;
+    height: 100%;
+    background: #18191a;
+    display: flex;
+    justify-content: center;
+}
+
+.profileFriendsContParent{
+    border-radius: 11px;
+    margin-top: 18px;
+    width: 75%;
+    background-color: rgb(67 64 64 / 44%);
+}
+
+.profileFriendsTilteCont{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    height: 121px;
+    border-bottom: 1px solid #3b3b3b;
+    margin-bottom: 10px;
+}
+
+.profileFriendsTilte{
+    margin: 0px;
+    color: white;
+}
+
+.profileFriendsCont{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profileFriends{
+    width: 396px;
+    height: 140px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+
+.profileFriendsImgCont{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgb(16 16 16);
+    margin-left: 95px;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.profileFriendsImg{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+
+}
+
+.profileFriendsUsernameCont{
+    margin: 0px 0px 0px 16px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+.profileFriendsUsername{
+    display: flex;
+    font-size: 20px;
+    font-weight: 900;
+    flex-wrap: wrap;
+    color: white;
+    align-content: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.profileRouteNone{
+    display: none;
+}
+
+
+.profilePosts{
+    border-radius: 11px;
+    margin-top: 18px;
+    width: 75%;
+    background-color: rgb(67 64 64 / 44%);
+    display: flex;
+    justify-content: center;
+}
+
+
+.profileVideos{
+    border-radius: 11px;
+    margin-top: 18px;
+    width: 75%;
+    background-color: rgb(67 64 64 / 44%);
+    display: flex;
+    justify-content: center;
+}
+
+.profilePhotos{
+    border-radius: 11px;
+    margin-top: 18px;
+    width: 75%;
+    background-color: rgb(67 64 64 / 44%);
+    display: flex;
+    justify-content: center;
+}

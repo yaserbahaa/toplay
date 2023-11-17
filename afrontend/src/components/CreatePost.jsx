@@ -271,10 +271,10 @@ return(<>
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
-    <div>
+    {/* <div>
         <textarea value={storyText} onChange={(e)=> setStoryText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"452px",marginTop:"13px",paddingLeft:"14px",height:'102px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
-    </div>
+    </div> */}
 
     <div className='uploadParent' >
         <div className='uploadHover'>

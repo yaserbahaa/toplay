@@ -81,7 +81,7 @@ resetScroll()
         <Route path={'/login'} element={<Login />}/>
         <Route path='/' element={<Home data={data} tokenData={tokenData} friendsData={friendsData}/>}/>
         <Route path='/profile' element={<Profile tokenData={tokenData}/>}/>
-        <Route path='/profile/id/:id' element={<UserProfile />}/>
+        <Route path='/profile/id/:id' element={<UserProfile tokenData={tokenData}/>}/>
         <Route path={'/lol'} element={<Lol data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path={'/valo'} element={<Valo data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path={'/csgo'} element={<Cs2 data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
