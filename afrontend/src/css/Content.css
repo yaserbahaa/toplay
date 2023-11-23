@@ -1,6 +1,21 @@
 
 
 
+
+.contentChildCont{
+    width: 468px;
+}
+
+.content{
+    width: 468px; 
+}
+.contentImgVideoCont{
+    width: 99.5%;
+    height: 442px;
+    border: 1px solid rgb(97, 97, 97);
+    border-radius: 4px;
+}
+
 .contentImgCont{
     width: 42px;
     height: 42px;
@@ -28,7 +43,6 @@
     margin-left: 12px;
     align-content: space-around;
     flex-wrap: wrap;
-    margin-right: 100px;
 }
 .ContentCreatedAt{
     font-size: 11px;
@@ -54,4 +68,22 @@
     right: 20px;
     top: 16px;
     margin: 0px;
+    cursor: pointer;
+}
+.contentImgView{
+    width: 99.573%;
+    max-height: 600px;
+    min-height: 275px;
+    border: 1px solid rgb(97, 97, 97);
+    border-radius: 6px;
+
+}
+.contentVideoView{
+    width: 99.573%;
+    max-height: 600px;
+    min-height: 275px;
+    border: 1px solid rgb(97, 97, 97);
+    border-radius: 6px;
+    object-fit: fill;
+
 }

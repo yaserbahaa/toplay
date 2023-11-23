@@ -202,7 +202,6 @@ export default function CreatePost(props){
     }
 
 
-console.log(game);
 return(<>
     <div style={{display:'flex',justifyContent:"center",position:"relative",alignContent:"center",flexWrap:"wrap",width:"100%",height:"55px"}}>
     <div className='imgParent' style={{position:"absolute",cursor:"pointer",left:"0px",top:"14px",display:"flex",justifyContent:"center",alignContent:"center",flexWrap:"wrap",borderRadius:"50%",height:"33px",width:"33px",margin:"0px 0px 0px 15px"}}  onClick={()=>{props.setShow(false);document.body.style.overflow='auto'}}>
@@ -239,14 +238,14 @@ return(<>
         <button onClick={()=>{setGame("warz");setLol(false);setValorant(false);setAll(false);setCsgo2(false);setWarz(true)}} className={warz ? "createPostwarz":"createPostGamesBtn"}>warzone </button> 
     </div>
     </div>
-    <div className='uploadParent' >
-        <div className='uploadHover'>
+    <div className='uploadParent_' >
+        <div className='uploadHover_'>
         <div className={previewUploadVideo||previewUploadImg ? "previewUpload":'previewUploadNone'}>
             <img onClick={()=>{SetPreviewUploadImg("");SetPreviewUploadVideo("");setImgOrVideoUpload('')}} style={{position:"absolute",cursor:"pointer",top:"4px",left:"4px",zIndex:"100"}} src={x} alt="" />
         {previewUploadVideo ? <video style={{width:'100%',height:"100%"}} src={previewUploadVideo} controls alt=""/> : ""}
         {previewUploadImg ? <img style={{width:'100%',height:"100%"}} src={previewUploadImg} alt=""/> : ""}
             </div>
-        <label className={previewUploadVideo||previewUploadImg ? "uploadNone":'upload2'}  >
+        <label className={previewUploadVideo||previewUploadImg ? "uploadNone":'upload2_'}  >
             Upload Photo/Video
         <input type="file" accept="video/*,image/*" onChange={handleUploadChagne} />
         </label>
@@ -264,7 +263,7 @@ return(<>
 
     <div className={show ? 'dontShowStort':'showStory'}>
 
-    <div style={{display:"flex",paddingLeft:"11px" ,width: "459px"}}>
+    <div style={{display:"flex",marginBottom:"13px",paddingLeft:"11px" ,width: "459px"}}>
     <div className='createPostImgCont'>
     <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt="" className='createPostImg'/>
     </div>

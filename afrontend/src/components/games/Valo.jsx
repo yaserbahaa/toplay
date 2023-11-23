@@ -29,7 +29,7 @@ export default function Valo(props){
     return(<>
             <Navbar tokenData={props.tokenData} routeColor={props.routeColor}/>
             <Stories data={props.data.stories}/>
-            <div style={{display:"flex",justifyContent:"center"}}>
+            <div style={{display:"flex",justifyContent:"center",position:"relative"}}>
             <ASideBar tokenData={props.tokenData} data={props.data}/>
             <Content data={data}/>
             <BSideBar friendsData={props.friendsData}/>

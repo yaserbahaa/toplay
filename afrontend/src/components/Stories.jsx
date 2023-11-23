@@ -47,13 +47,13 @@ export default function Stores(props){
             }
         }
     return(<>
-        <div style={{display:"flex",alignContent:"center",flexWrap:"wrap",height:'85px',justifyContent:"center",margin:'75px 0px 20px 0px',gap:"23px"}}>
+        <div className='storyGrandCont' >
         {stories ? stories.map((story)=>{
             return(
         <div className="storyParent" key={story._id} >
             <div className='storyCont' >
             {/* <img className='storyImg'  src={story.icon} alt="" /> */}
-            <img data-img={story.storyImgUrl} data-video={story.storyVideoUrl} data-icon={story.icon} data-username={story.username} data-id={story.id} onClick={storyHandler}  className='storyImg'  src={story.icon} alt="" />
+            <img className='storyImg' data-img={story.storyImgUrl} data-video={story.storyVideoUrl} data-icon={story.icon} data-username={story.username} data-id={story.id} onClick={storyHandler} src={story.icon} alt="" />
             </div>
             <p data-userid={story.id} onClick={userProifle} className='storyUsername' >{story.username}</p>
         </div>

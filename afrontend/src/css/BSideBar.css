@@ -14,6 +14,8 @@
     height: 595px;
     margin: 0px 10px 0px 30px;
     gap: 15px;
+    position: fixed;
+    right: 3px;
 }
 
 .bSideBarTilteParent{

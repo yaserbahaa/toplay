@@ -11,6 +11,8 @@ import Cs2 from './components/games/Cs2'
 import Lol from './components/games/Lol'
 import Valo from './components/games/Valo'
 import Warz from './components/games/Warz'
+import Chat from './components/Chat'
+import Developer from './components/Developer'
 
 function App() {
     const [routeColor,setRouteColor]=useState("")
@@ -44,7 +46,6 @@ resetScroll()
           try{
               const resp = await axios.get('http://localhost:3000/tokenData',{withCredentials: true,})
               setTokenData(resp.data)
-              console.log("token data resives");
           }
           catch{
               console.log("could not get token data bec user is not authentcated");
@@ -54,7 +55,6 @@ resetScroll()
         try{
             const resp = await axios.get('http://localhost:3000/data',{withCredentials: true,})
             setData(resp.data)
-            console.log("post&story data has been resived");
         }
         catch{
             console.log("could not get user data");
@@ -64,7 +64,6 @@ resetScroll()
       try{
         const resp = await axios.get("http://localhost:3000/userFriends",{withCredentials:true})
         setFriendsData(resp.data)
-        console.log("friends data");
       }catch{
         console.log("could not get friends data");
       }
@@ -73,19 +72,20 @@ resetScroll()
     tokenData()
     getData()
     friendsData()
-    document.body.style.overflow='auto'
 },[])
   return (
     <>
         <Routes>
         <Route path={'/login'} element={<Login />}/>
-        <Route path='/' element={<Home data={data} tokenData={tokenData} friendsData={friendsData}/>}/>
+        <Route path='/' element={<Home data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path='/profile' element={<Profile tokenData={tokenData}/>}/>
+        <Route path='/chat' element={<Chat/>}/>
         <Route path='/profile/id/:id' element={<UserProfile tokenData={tokenData}/>}/>
         <Route path={'/lol'} element={<Lol data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path={'/valo'} element={<Valo data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path={'/csgo'} element={<Cs2 data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
         <Route path={'/warz'} element={<Warz data={data} tokenData={tokenData} friendsData={friendsData} setRouteColor={setRouteColor} routeColor={routeColor}/>}/>
+        <Route path='/developer' element={<Developer/>}/>
         </Routes>
     </>
   )

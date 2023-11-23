@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import ninja from '/icons8-ninja-80.png'
+// import iconProfile from "../assets/icons8-user-64 (1).png"
 import iconProfile from "../assets/icons8-user-64 (1).png"
+import coverProfile from "../assets/wallpaperflare.com_wallpaper.jpg"
 import axios from 'axios'
 import Navbar from "./Navbar";
 import { Link } from 'react-router-dom';
@@ -47,7 +49,7 @@ export default function Login(props){
                     username:usernameSig,
                     password:passwordSig,
                     icon:iconProfile,
-                    cover:iconProfile
+                    cover:coverProfile
             })
                 setUsernameSig('')
                 setPasswordSig('')
@@ -100,7 +102,7 @@ const login = async(e)=>{
             </form>
         <hr style={{width:'200px',marginTop:"30px"}}/>  
             
-            <h5 style={{marginLeft:"92px" ,marginBottom:"0px",color:"white"}}>contuine with google</h5>
+            {/* <h5 style={{marginLeft:"92px" ,marginBottom:"0px",color:"white"}}>contuine with google</h5> */}
             <h6 style={{marginLeft:'79px',marginTop:"29px",color:"white"}}>Dont have an account? <span onClick={()=>{setSignupToggle(true)}} style={{cursor:"pointer"}}>Sign in</span></h6>
     </div>
 

@@ -5,20 +5,15 @@
 
 
 
-.ASideBarGrandba{
-    position: fixed;
-    left: 0px;
-    display: flex;
-    flex-wrap: wrap;
-    width: 500px;
-    height: 610px;
-  }
+
   .ASideBarParent{
     width: 290px;
     height: 98px;
     margin-left: 40px;
     border-radius: 6px;
     background-color: rgb(36, 37, 38);
+    position: fixed;
+    left: 0px;
 }
 .ASideBar{
     padding: 4px 0px 0px 14px;
@@ -62,7 +57,7 @@
     justify-content: center;
 }
 .aSideBarUpload{
-    width: 85%;
+    width: 76%;
     height: 24px;
     border-radius: 5px;
     border: none;
@@ -70,4 +65,36 @@
     background: #c7c7c7;
     color: black;
     cursor: pointer;
+}
+.AsideBarToplayIcon{
+    display: none;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    right: 6px;
+    top: 0.5px;
+    cursor:pointer
+}
+
+.AsideBarShowToplayBlur{
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: #00000075;
+    z-index: 1001;
+}
+
+.AsideBarshowToplay{
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 313px;
+    height: 174px;
+    background-color: rgb(36, 37, 38);
+    z-index: 1002;
+    border-radius: 6px;
+    flex-direction: column;
 }

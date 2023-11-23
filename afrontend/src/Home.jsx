@@ -15,10 +15,14 @@ import { Route, Routes,useNavigate } from 'react-router-dom'
 
 export default function Home(props){
     const navigate = useNavigate()    
+
+    useEffect(()=>{
+        props.setRouteColor("all")
+    },[])
     return(<>
-        <Navbar tokenData={props.tokenData}/>
+        <Navbar tokenData={props.tokenData} routeColor={props.routeColor}/>
         <Stories data={props.data.stories}/>
-        <div style={{display:"flex",justifyContent:"center"}}>
+        <div style={{display:"flex",justifyContent:"center",position:"relative"}}>
         <ASideBar tokenData={props.tokenData} data={props.data}/>
         <Content data={props.data}/>
         <BSideBar friendsData={props.friendsData}/>

@@ -1,7 +1,8 @@
+import "../css/Navbar.css"
 import { useState } from 'react'
 import icon from '../assets/icons8-ninja-80 (1).png'
 import searchIcon from '../assets/icons8-search-50.png'
-import { Routes,Route,Link } from 'react-router-dom'
+import { Routes,Route,Link, useNavigate } from 'react-router-dom'
 import valoDefult from '../assets/icons8-valorant-100 (1).png'
 import valo from '../assets/icons8-valorant-100 (2).png'
 import lolDefult from '../assets/icons8-league-of-legends-100 (3).png'
@@ -12,6 +13,12 @@ import warzDefult from '../assets/icons8-call-of-duty-warzone-100 (2).png'
 import warz from '../assets/icons8-call-of-duty-warzone-100 (3).png'
 import chat from '../assets/icons8-chat-64 (1).png'
 import profile from '../assets/icons8-user-64 (1).png'
+import dev from '../assets/icons8-source-code-48.png'
+import dis from '../assets/icons8-discord-48.png'
+import menu from '../assets/icons8-menu-50.png'
+
+
+
 
 
 
@@ -19,31 +26,45 @@ import profile from '../assets/icons8-user-64 (1).png'
 
 
 export default function Navbar(props){
+    const [showToplay,setShowToplay]=useState(false)
     const [valoToggle,setValoToggle]=useState(false)
     const [lolToggle,setLolToggle]=useState(false)
     const [csgoToggle,setCsgoToggle]=useState(false)
     const [warzToggle,setWarzToggle]=useState(false)
+    const [test,setTest]=useState(true)
+
+
+    const navigate = useNavigate()
+
+
+    function toplay(){
+        setShowToplay(true)
+    }
+    function toplayNone(){
+        setShowToplay(false)
+    }
     return(<>
 
 
-    <div className="navBar" style={{zIndex:"1000",position:"fixed",top:'0px',left:'0px',padding :"0px",margin:"0px", width:"100%", height:"56px",display:"flex",alignContent:"center",backgroundColor:"#242526",borderBottom: "1px solid #333333",flexWrap: "wrap"}}>
+    <div className="navbarNavbar" >
         
-    <div style={{display:"flex",gap:"10px",alignContent:"center",flexWrap:"wrap",height:"56px"}}>
-    <div className="icon" style={{}}>
-        <Link to={'/'}>
-        <img src={icon} alt="" style={{width:"50px",height:"50px",marginLeft:"23px",marginTop:"13px",cursor:"pointer"}}/>
-        </Link>
-    </div>
-    <div className='search' style={{marginTop:"28px",marginBottom:"28px",position:"relative"}}>
+
+    <div className="iconCont" >
+
+            <Link className="icon" to={"/"}>
+        <img  src={icon} alt="" style={{width:"100%",height:"55px"}}/>
+            </Link>
+
+    <div className='search' >
         <form action=""> 
-            <img src={searchIcon} style={{width:"14px",height:"14px",paddingRight:"6px",paddingTop:"4px",borderRadius:"6px",position:"absolute",right:"0px"}} alt="" />
-        <input type="search" placeholder='Search' style={{outline:"none",height:"21px",borderRadius:"5px",background:"rgb(63 63 63 / 94%)",border:"none" ,color:"white",paddingLeft:"8px"}}/>
+            <img className="navBarSearchIcon" src={searchIcon} style={{width:"14px",height:"14px",paddingRight:"6px",paddingTop:"4px",borderRadius:"6px",position:"absolute",right:"0px"}} alt="" />
+        <input className="navBarSearch" type="search" placeholder='Search' style={{outline:"none",height:"21px",borderRadius:"5px",background:"rgb(63 63 63 / 94%)",border:"none" ,color:"white",paddingLeft:"8px"}}/>
         </form>
     </div>
 
     </div>
 
-    <div style={{display:"flex",position:"absolute",top:'50%',left:"50%", transform: "translate(-50%,-50%)",gap:"75px" ,color:"white"}}>
+    <div className='navBarGamesCont' >
 
 
         <div  style={{position:"relative",width:"40px"}}>
@@ -62,11 +83,9 @@ export default function Navbar(props){
 
 
 
-        <div>
     <Link style={{textDecoration:"none",color:"white"}} to={'/'}>
-        <h3 style={{cursor:"pointer"}}>All</h3>
+        <h3 className={props.routeColor == "all" ? "all" : "allDefult"}>All</h3>
     </Link>
-        </div>
 
 
         <div style={{position:"relative",width:"40px"}}>
@@ -85,19 +104,39 @@ export default function Navbar(props){
         </div>
 
         </div>
-        <div style={{position:"absolute",right:"23px"}}>
-        <div style={{display:"flex",gap:"25px",height:"56px",alignContent:"center",flexWrap:"wrap"}}>
-                {/* <Link to={'/chat'}> */}
-                <img style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={chat} alt="" />
-                    {/* </Link> */}
-
-                 <Link style={{width:"42px",height:'42px',borderRadius:"50%"}} to={'/profile'}>
-                <img onClick={()=>{document.body.style.overflow='auto'}} style={{width:"42px",height:'42px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : profile} alt="" />
+        <div className="navbarProfileImgCont" >
+                <div className="navbarChatImgNone">
+                <Link className="navBarChatImg__" to={'/chat'}>
+                <img style={{width:"100%",height:'50px',cursor:"pointer"}} src={chat} alt="" />
                 </Link>
+                </div>
+
+                <div className="navbarProfileImgNone">
+                 <Link className="navBarProfileImg__" to={'/profile'}>
+                <img onClick={()=>{document.body.style.overflow='auto'}} style={{width:"100%",height:'45px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : profile} alt="" />
+                </Link>
+                </div>
+
+                <div style={{height:"100%",display:"flex",alignContent:"center",flexWrap:"wrap"}}>
+                <img onClick={toplay} style={{width:"42px",height:"42px",cursor:"pointer"}} src={menu} alt="" />
+                </div>
+        </div>
+        <div onClick={toplayNone} className={showToplay ? "showToplayBlur" : "dontShowToplay"}>
 
         </div>
-        </div>
+        <div className={showToplay ? "showToplay" : "dontShowToplay"}>
+                <h1 onClick={()=>{navigate("/")}} className="toplayTitle">toplay</h1>
 
+                <a className="toplayDiscord" href="">
+                {dis ? <img className="toplayDiscordImg" src={dis} alt="" /> : ""}
+                <p className="toplayDiscordTitle">discord</p>
+                </a>
+
+                <Link className="toplayDeveloper" to={"/developer"}>
+                {dev ? <img className="toplayDeveloperImg" src={dev} alt="" /> : ""}
+                <p className="toplayDeveloperTitle">developer</p>
+                </Link>
+        </div>
     </div>
     
 

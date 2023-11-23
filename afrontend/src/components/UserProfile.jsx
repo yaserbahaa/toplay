@@ -83,7 +83,7 @@ UserProfile()
 
     <div className={"profileFriendsTilteCont"}>
     <h1 className={  "profileFriendsTilte" }>
-    your friends
+    {user ? user.userData.username :""} friends
     </h1>
     </div>
 
@@ -110,7 +110,7 @@ UserProfile()
             <div className='contentParent'>
     {user ? user.userPostsData.map((post) =>{
             return(
-                <div key={post._id} className='content' >
+                <div key={post._id} className='contentChildCont' >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
@@ -121,9 +121,7 @@ UserProfile()
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-        <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
-            {post.imgUrl ? <img  src={post.imgUrl} alt="" style={{width:"100%",height:"100%"}}/> : <video src={post.videoUrl} style={{width:"100%",height:"100%"}} controls/>}
-        </div>
+        {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentImgView" controls/>}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -133,7 +131,7 @@ UserProfile()
             {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
-        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
+        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"100%"}}>{post.text}</p>
         </div>
         <div>
             {/* <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p> */}
@@ -151,7 +149,7 @@ UserProfile()
         <div className='contentParent'>
     {user ? user.userPostsData.map((post) =>{
             return(
-                <div key={post._id} className={post.videoUrl ? 'content' :"profileRouteNone"} >
+                <div key={post._id} className={post.videoUrl ? 'contentChildCont' :"profileRouteNone"} >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
@@ -162,9 +160,7 @@ UserProfile()
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-        <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
-            {post.videoUrl ?  <video src={post.videoUrl} style={{width:"100%",height:"100%"}} controls/> : ""}
-        </div>
+            {post.videoUrl ?  <video src={post.videoUrl} className="contentImgView" controls/> : ""}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -174,7 +170,7 @@ UserProfile()
             {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
-        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
+        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"100%"}}>{post.text}</p>
         </div>
         <div>
             {/* <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p> */}
@@ -192,7 +188,7 @@ UserProfile()
         <div className='contentParent'>
     {user ? user.userPostsData.map((post) =>{
             return(
-                <div key={post._id} className={post.imgUrl ? 'content' :"profileRouteNone"} >
+                <div key={post._id} className={post.imgUrl ? 'contentChildCont' :"profileRouteNone"} >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
@@ -203,9 +199,7 @@ UserProfile()
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-        <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
-            {post.imgUrl ? <img  src={post.imgUrl} alt="" style={{width:"100%",height:"100%"}}/> : ""}
-        </div>
+            {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : ""}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -215,7 +209,7 @@ UserProfile()
             {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
-        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
+        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"100%"}}>{post.text}</p>
         </div>
         <div>
             {/* <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p> */}

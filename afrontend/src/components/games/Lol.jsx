@@ -17,7 +17,6 @@ export default function Lol(props){
             try{
                 const resp = await axios.get('http://localhost:3000/dataLol',{withCredentials: true,})
                 setData(resp.data)
-                console.log("post&story data has been resived");
             }
             catch{
                 console.log("could not get user data");
@@ -30,7 +29,7 @@ export default function Lol(props){
     return(<> 
             <Navbar tokenData={props.tokenData} routeColor={props.routeColor}/>
             <Stories data={props.data.stories}/>
-            <div style={{display:"flex",justifyContent:"center"}}>
+            <div style={{display:"flex",justifyContent:"center",position:"relative"}}>
             <ASideBar tokenData={props.tokenData} data={props.data}/>
             <Content data={data}/>
             <BSideBar friendsData={props.friendsData}/>

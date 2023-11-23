@@ -1,0 +1,197 @@
+
+
+
+
+
+
+.navbarNavbar{
+    z-index: 1000;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    height: 62px;
+    display: flex;
+    align-content: center;
+    background-color: rgb(36, 37, 38);
+    border-bottom: 1px solid rgb(51, 51, 51);
+    flex-wrap: wrap;
+}
+
+
+
+
+
+.navBarGamesCont{
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 75px;
+    color: white;
+}
+
+
+.navBarSearch{
+    outline: none;
+    height: 21px;
+    border-radius: 5px;
+    background: rgba(63, 63, 63, 0.94);
+    border: none;
+    color: white;
+    padding-left: 8px;
+}
+
+.navBarSearchIcon{
+    width: 14px;
+    height: 14px;
+    padding-right: 6px;
+    padding-top: 4px;
+    border-radius: 6px;
+    position: absolute;
+    right: 0px;
+}
+.icon{
+    width: 55px;
+    height: 100%;
+    display: flex;
+    cursor: pointer;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.search{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.navBarProfileImg__{
+    display: flex;
+    height: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 45px;
+    border-radius:50%;
+}
+
+.navBarChatImg__{
+    display: flex;
+    height: 100%;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 50px;
+}
+.navbarProfileImgCont{
+    position: absolute;
+    gap: 20px;
+    height: 100%;
+    right: 23px;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.iconCont{
+    display: flex;
+    gap: 10px;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 56px;
+    margin-left: 15px;
+}
+
+.all{
+    font-size: 19px;
+    color:white
+}
+.allDefult{
+    font-size: 19px;
+    color:#ffffff8c
+}
+
+.dontShowToplay{
+    display: none;
+}
+.showToplay{
+    display: flex;
+    position: absolute;
+    top: 64px;
+    right: 22px;
+    width: 313px;
+    height: 174px;
+    background-color: rgb(36, 37, 38);
+    z-index: 1002;
+    border-radius: 6px;
+    flex-direction: column;
+}
+.showToplayBlur{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #00000075;
+    z-index: 1001;
+}
+
+.toplayTitle{
+    margin: 5px 0px 17px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    color: white;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+
+.toplayDiscord{
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.toplayDiscordImg{
+    height: 48px;
+    width: 48px;
+    margin-left: 15px;
+}
+.toplayDiscordTitle{
+    display: flex;
+    margin: 0px 0px 0px 12px;
+    align-content: center;
+    flex-wrap: wrap;
+    color: white;
+    cursor: pointer;
+}
+
+.toplayDeveloper{
+    height: 48px;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.toplayDeveloperImg{
+    height: 48px;
+    width: 48px;
+    margin-left: 15px;
+}
+
+.toplayDeveloperTitle{
+    display: flex;
+    margin: 0px 0px 0px 12px;
+    align-content: center;
+    flex-wrap: wrap;
+    color: white;
+    cursor: pointer;
+}

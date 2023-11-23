@@ -1,12 +1,23 @@
 
 
 /* colors:1-main:#18191a,2-##282a2f,3-#35383b */
-
+html{
+  overflow-x: hidden;
+}
 body{
     font-family: Helvetica, Arial, sans-serif;
     background-color: #18191a;
     margin: 0px;
     padding: 0px;
+}
+::-webkit-scrollbar { 
+  width: 5px;
+  background-color: rgb(36, 37, 38);
+} 
+::-webkit-scrollbar-thumb {
+  height: 100px;
+  background-color: #ffffff8a;
+  border-radius: 15px;
 }
 input[type="file"] {
   display: none;
@@ -32,7 +43,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     left: 50%;
     transform: translate(-50%,-50%);
     border-radius: 7px;
-    z-index: 100;
+    z-index: 1002;
 
 
  }
@@ -48,7 +59,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    z-index: 99;
+    z-index: 1001;
  }
   .dontShowBlur{
     display: none;
@@ -105,8 +116,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
   }
   .valoDefultDis{
@@ -117,8 +128,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
 
   }
@@ -133,8 +144,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
   }
   .lolDefultDis{
@@ -145,8 +156,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
 
   }
@@ -160,8 +171,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
   }
   .csgoDefultDis{
@@ -172,8 +183,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
 
   }
@@ -186,8 +197,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
   }
   .warzDefultDis{
@@ -198,8 +209,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 60px;
-    height: 60px;
+    width: 62px;
+    height: 66px;
     cursor: pointer;
 
   }
@@ -239,6 +250,8 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   flex-wrap: wrap;
   margin-top: 15px;
 }
+
+
 
 .BSideBarGrandba{
   position: fixed;
@@ -282,7 +295,7 @@ textarea::-webkit-scrollbar-thumb {
 
 
 .uploadParent{
-  height: 240px;
+  height: 338px;
   width: 454px;
   margin-left: 7px;
   border: 1px solid rgb(89 89 89);
@@ -292,7 +305,7 @@ textarea::-webkit-scrollbar-thumb {
   display: flex;
   place-content: center;
   flex-wrap: wrap;
-  height: 219px;
+  height: 100%;
   width: 432px;
   border-radius: 4px;
   color: white;
@@ -300,7 +313,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 .uploadHover{
   background-color: rgb(51 51 51);
-  height: 219px;
+  height: 93.4%;
   width: 432px;
   margin: 11px;
   border-radius: 4px;
@@ -336,3 +349,624 @@ textarea::-webkit-scrollbar-thumb {
 .LikeDis{
   display: none;
 }
+
+
+
+
+
+
+
+
+@media (max-width:1460px) {
+  .BSideBar{
+    width: 315px;
+  }
+  .ASideBarParent{
+    width: 260px;
+  }
+  .navBarGamesCont{
+    width: 465px;
+    gap: 73px;
+}
+  .storyGrandCont{
+    gap: 17px;
+  }
+  .storyParent {
+  width: 53px;
+  }
+  .storyCont{
+  height: 51px;
+  width:51px ;
+  }
+  .storyImg{
+  height: 49px;
+  width: 49px;
+  }
+}
+@media (max-width:1350px  ) {
+  .navBarSearch{
+    width: 182px;
+  }
+  .BSideBar{
+    width: 290px;
+  }
+  .ASideBarParent{
+    width: 253px;
+  }
+  .navBarGamesCont{
+    width: 450px;
+    gap: 71px;
+  }
+  .storyGrandCont{
+    gap: 16px;
+  }
+.storyParent {
+  width: 52px;
+}
+.storyCont{
+  height: 50px;
+  width:50px ;
+
+}
+.storyImg{
+  height: 48px;
+  width:48px ;
+}
+
+}
+
+@media (max-width:1250px  ) {
+  .storyGrandCont{
+    gap: 14px;
+  }
+  .navBarSearch{
+    width: 180px;
+  }
+  .BSideBar{
+    width: 255px;
+  }
+  .ASideBarParent{
+    width: 243px;
+  }
+  .navBarGamesCont{
+    width: 425px;
+    gap: 70px;
+  }
+  /* .storyGrandCont{
+    gap: 16px;
+  }
+.storyParent {
+  width: 51px;
+}
+.storyCont{
+  height: 49px;
+}
+.storyImg{
+  height: 47px;
+} */
+
+}
+
+@media (max-width:1185px  ) {
+  .storyGrandCont{
+    gap: 11px;
+  }
+  .navBarSearch{
+    width: 178px;
+  }
+  .BSideBar{
+    width: 228px;
+  }
+  .ASideBarParent{
+    margin-left: 20px;
+  }
+  .navBarGamesCont{
+    width: 405px;
+    gap: 65px;
+  }
+  /* .storyGrandCont{
+    gap: 15px;
+  }
+.storyParent {
+  width: 50px;
+}
+.storyCont{
+  height: 48px;
+}
+.storyImg{
+  height: 46px;
+} */
+
+}
+
+@media (max-width:1130px  ) {
+  .storyGrandCont{
+    gap: 8px;
+  }
+  .navBarSearch{
+    width: 163px;
+  }
+  .BSideBar{
+    width: 225px;
+  }
+  .ASideBarParent{
+    margin-left: 4px;
+  }
+  .navBarGamesCont{
+
+    width: 380px;
+    gap: 65px;
+  }
+  /* .storyGrandCont{
+    gap: 15px;
+  }
+.storyParent {
+  width: 50px;
+}
+.storyCont{
+  height: 48px;
+}
+.storyImg{
+  height: 46px;
+} */
+
+}
+
+
+
+@media (max-width:1020px ) {
+  .storyGrandCont{
+    gap:17px;
+  }
+  ::-webkit-scrollbar { 
+    width: 4px;
+  } 
+  .BSideBar{
+    display: none
+  }
+  .ASideBarParent{
+    position: absolute;
+    margin-left: 0px;
+    left: 50%;
+    top: 0px;
+    transform: translate(-50%, 0%);
+    height: 87px;
+    width: 468px;
+  }
+  .contentParent{
+    margin-top: 125px;
+  }
+  .navBarSearch{
+    display: none;
+  }
+  .navBarSearchIcon{
+    display: none;
+  }
+  .navbarChatImgNone{
+    display: none;
+  }
+  .navbarProfileImgNone{
+    display: none;
+  }
+  .navBarGamesCont{
+    width: 443px;
+    gap: 80px;
+  }
+  .navbarProfileImgCont{
+    right: 40px;
+  } 
+  .iconCont{
+    margin-left: 40px;
+  }
+
+}
+
+@media (max-width:720px  ) {
+
+  ::-webkit-scrollbar { 
+    width: 3px;
+  } 
+
+  .navbarProfileImgCont{
+    display: none;
+  }
+  .iconCont{
+    display: none;
+  }
+  .AsideBarToplayIcon{
+    display: block;
+  }
+  /* .storyGrandCont{
+    gap: 15px;
+  }
+.storyParent {
+  width: 50px;
+}
+.storyCont{
+  height: 48px;
+}
+.storyImg{
+  height: 46px;
+} */
+
+}
+
+@media(max-width:490px){
+
+
+.navBarGamesCont {
+  width: 421px;
+  gap: 75px;
+}
+.ASideBarParent{
+  width: 450px;
+}
+.contentChildCont{
+  width: 450px;
+
+}
+.storyGrandCont{
+  gap: 15px;
+}
+.storyParent {
+  width: 50px;
+}
+.storyCont{
+  height: 48px;
+  width:48px ;
+
+}
+.storyImg{
+  height: 46px;
+  width: 46px;
+}
+}
+
+
+@media(max-width:470px){
+
+.navBarGamesCont {
+  width: 390px;
+  gap: 54px;
+}
+.ASideBarParent{
+  width: 419px;
+}
+.contentChildCont{
+  width: 419px;
+
+}
+
+.storyGrandCont{
+  gap: 9px;
+}
+/* .storyParent {
+  width: 50px;
+}
+.storyCont{
+  height: 48px;
+}
+.storyImg{
+  height: 46px;
+} */
+}
+
+@media(max-width:435px){
+  .navBarGamesCont {
+    width: 354px;
+    gap: 42px;
+  }
+  .ASideBarParent{
+    width: 388px;
+  }
+
+  .contentChildCont{
+    width: 388px;
+  }
+  
+  .storyGrandCont{
+    gap: 6px;
+  }
+  .storyParent {
+    width: 48px;  
+  }
+  .storyCont{
+    height: 46px;
+    width:46px ;
+
+  }
+  .storyImg{
+    height: 44px;
+    width: 44px;
+  }
+  }
+
+  @media(max-width:400px){
+
+
+
+    .navBarGamesCont {
+    width: 332px;
+    gap: 40px;
+    }
+
+    .ASideBarParent{
+      width: 361px;
+    }
+  
+    .contentChildCont{
+      width: 361px;
+    }
+    
+    .storyGrandCont{
+      gap: 5px;
+    }
+    .storyParent {
+      width: 46px;  
+    }
+    .storyCont{
+      height: 44px;
+      width:44px ;
+
+    }
+    .storyImg{
+      height: 42px;
+      width: 42px;
+    }
+    }
+
+
+    
+    @media(max-width:366px){
+      .navbarNavbar{
+        height: 56px;
+      }
+    .valo{
+      width: 55px;
+      height: 55px;
+    }
+    .lol{
+      width: 55px;
+      height: 55px;
+    }
+    .all {
+      font-size: 17px;
+    }
+    .allDefult {
+      font-size: 17px;
+  }
+    .csgo{
+      width: 55px;
+      height: 55px;
+    }
+    .warz{
+      width: 55px;
+      height: 55px;
+    }
+
+    .valoDefult{
+      width: 55px;
+      height: 55px;
+    }
+    .lolDefult{
+      width: 55px;
+      height: 55px;
+    }
+    .csgoDefult{
+      width: 55px;
+      height: 55px;
+    }
+    .warzDefult{
+      width: 55px;
+      height: 55px;
+    }
+
+      .navBarGamesCont {
+      width: 300px;
+      gap: 37px;  
+      }
+  
+      .ASideBarParent{
+        width: 323px;
+      }
+    
+      .contentChildCont{
+        width: 323px;
+      }
+      
+      .storyGrandCont{
+        margin: 63px 0px 20px 0px;
+      }
+      .storyParent {
+        width: 40px; 
+      }
+      .storyCont{
+        height: 38px;
+        width:38px ;
+
+      }
+      .storyImg{
+        height: 36px;
+        width: 36px;
+      }
+      }
+
+
+
+
+
+
+      @media(max-width:330px){
+        .navbarNavbar{
+          height: 53px;
+        }
+      .valo{
+        width: 51px;
+        height: 51px;
+      }
+      .lol{
+        width: 51px;
+        height: 51px;
+      }
+      .csgo{
+        width: 51px;
+        height: 51px;
+      }
+      .warz{
+        width: 51px;
+        height: 51px;
+      }
+  
+      .valoDefult{
+        width: 51px;
+        height: 51px;
+      }
+      .lolDefult{
+        width: 51px;
+        height: 51px;
+      }
+          .all {
+            font-size: 17px;
+        }
+        .allDefult{
+          font-size: 17px;
+      }
+      .csgoDefult{
+        width: 51px;
+        height: 51px;
+      }
+      .warzDefult{
+        width: 51px;
+        height: 51px;
+      }
+  
+        .navBarGamesCont {
+          width: 278px;
+          gap: 24px;
+        }
+    
+        .ASideBarParent{
+          width: 289px;   
+          height: 75px;
+      }
+      .contentParent {
+        margin-top: 107px;
+    }
+      
+        .contentChildCont{
+          width: 289px;
+        }
+        
+        .storyGrandCont{
+          margin: 52px 0px 4px 0px;
+        }
+        .storyParent {
+          width: 35px;
+        }
+        .storyCont{
+          height: 33px;
+          width:33px ;
+
+        }
+        .storyImg{
+          height: 31px;
+          width: 31px;
+        }
+        }
+
+
+
+
+
+
+        @media(max-width:295px){
+          .navBarGamesCont {
+            width: 89%;
+            
+          }
+      
+          .ASideBarParent{
+            width: 95%;   
+            height: 75px;
+        }
+        .contentParent {
+          margin-top: 107px;
+          width: 100%;
+      }
+        
+          .contentChildCont{
+            width: 95%;
+          }
+          
+          .storyGrandCont{
+            margin: 52px 0px 4px 0px;
+            width: 100%;
+          }
+          .storyParent {
+            width: 11%;
+          }
+          .storyCont{
+            height: 42%;
+            width: 94%;
+  
+          }
+          .storyImg{
+            height: 92%;
+            width: 92%;
+          }
+          }
+
+          @media(max-width:243px){
+            .storyGrandCont{
+              display: none;
+              
+            }
+            .contentParent {
+              margin-top: 161px;
+          }
+          .ASideBarParent{
+            top: 65px;
+          }
+          }
+
+          @media(max-width:232px){
+            .valo{
+              width: 40px;
+              height: 40px;
+            }
+            .lol{
+              width: 40px;
+              height: 40px;
+            }
+            .csgo{
+              width: 40px;
+              height: 40px;
+            }
+            .warz{
+              width: 40px;
+              height: 40px;
+            }
+        
+            .valoDefult{
+              width: 40px;
+              height: 40px;
+            }
+            .lolDefult{
+              width: 40px;
+              height: 40px;
+            }
+                .all {
+                  font-size: 14px;
+              }
+              .allDefult{
+                font-size: 14px;
+            }
+            .csgoDefult{
+              width: 40px;
+              height: 40px;
+            }
+            .warzDefult{
+              width: 40px;
+              height: 40px;
+            }
+          }

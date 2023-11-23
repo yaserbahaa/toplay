@@ -1,13 +1,10 @@
 
 import "../css/Content.css"
-import profile from '../assets/icons8-user-64 (1).png'
-import photo from '../assets/pxfuel.jpg'
-import LikeDefult from '../assets/icons8-heart-24.png'
-import Like from '../assets/icons8-heart-24 (1).png'
-import comment from '../assets/icons8-comment-24.png'
+// import LikeDefult from '../assets/icons8-heart-24.png'
+// import Like from '../assets/icons8-heart-24 (1).png'
+// import comment from '../assets/icons8-comment-24.png'
 import { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import axios from 'axios'
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 
@@ -15,8 +12,8 @@ import axios from 'axios'
 export default function Content(props){
     // const [LikeToggle,setLikeToggle]=useState(false)
     // const [showLike,setLike]=useState()
-
-
+    
+    
     const posts = props.data.posts
     const navigate=useNavigate()
 
@@ -45,27 +42,43 @@ export default function Content(props){
 
     }
 
+    function gameRoute(e){
+        const game = e.target.getAttribute("data-game")
+        if(game =="valorant"){
+            navigate("/valo")
+        }
+        else if(game =="lol"){
+            navigate("/lol")
+        }
+        else if(game =="csgo2"){
+            navigate("/csgo")
+        }
+        else if(game =="warz"){
+            navigate("/warz")
+        }
+    }
     useEffect(()=>{
         // console.log(test);
     },[])
         return(<>
+
+
     <div className='contentParent'>
+
     {posts ? posts.map((post) =>{
             return(
-                <div key={post._id} className='content' >
+                <div key={post._id} className="contentChildCont"  >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
         </div>
         <div style={{display:"flex",alignContent:'center',flexWrap:"wrap"}}>
         <p data-userid={post.id} onClick={userProifle} className="contentUsername" >{post.username}</p>
-        <p className="contentGame">{post.game}</p>
+        <p data-game={post.game} onClick={gameRoute} className="contentGame">{post.game}</p>
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-        <div style={{width:"442px",height:"442px",border:"1px solid rgb(97 97 97)",borderRadius:"4px"}}>
-            {post.imgUrl ? <img  src={post.imgUrl} alt="" style={{width:"100%",height:"100%"}}/> : <video src={post.videoUrl} style={{width:"100%",height:"100%"}} controls/>}
-        </div>
+            {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentVideoView" controls />}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -75,7 +88,7 @@ export default function Content(props){
             {/* <p style={{color:"white",fontSize:"14px",marginTop:"8px",marginBottom:"0px"}}>{showLike ? showLike : post.like}likes </p> */}
         </div>
         <div>
-        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"440px"}}>{post.text}</p>
+        <p style={{color:"white",fontSize:"13px",marginTop:"24px",marginBottom:"0px",overflowWrap:'break-word',width:"100%"}}>{post.text}</p>
         </div>
         <div>
             {/* <p style={{color:"rgb(147, 145, 145)",fontSize:"14px",marginTop:"15px",marginBottom:"0px",cursor:"pointer"}}>View all 0 comments</p> */}
@@ -84,7 +97,7 @@ export default function Content(props){
     
      </div>
     )
-    }).slice(0,10)
+    })
     : ""}
     </div>
             </>)

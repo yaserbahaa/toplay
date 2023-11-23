@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 
 export default function BSideBar(props){
     const friendsData = props.friendsData
-    console.log(friendsData );
     const navigate = useNavigate()
     function userProfile(e){
         const friendId = e.target.getAttribute("data-friendid")
@@ -15,7 +14,6 @@ export default function BSideBar(props){
         navigate(`/profile/id/${friendId}`)
         }
     return(<>
-            <div className='BSideBarGrandba'>
             <div className='BSideBar' >
                 <div className='bSideBarTilteParent'>
                     <p className='bSideBarTilte'>Your Friends</p>
@@ -33,9 +31,8 @@ export default function BSideBar(props){
                     )
             }) : ""}
 
-
+            
         </div>
-            </div>
 
     </>)
 }
