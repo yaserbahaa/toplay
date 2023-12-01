@@ -59,7 +59,8 @@ UserProfile()
             </div>
             <div className="profileUsernameCont">
                 {user ? <p className="profileUsername">{user.userData.username}</p> : ""}
-                <span onClick={()=>{setRouteChoose("friends")}} style={{color:"#676767",cursor:"pointer"}}>{user.userFriendsData ? Object.keys(user.userFriendsData).length : ""} friends</span>
+                <span onClick={()=>{setRouteChoose("friends")}} style={{color:"#676767",cursor:"pointer"}}>{user.userFriendsData ? Object.keys(user.userFriendsData).length : ""}friends</span>
+                <button className="profileOptionsBtn__" onClick={addFriend}>add</button>
             </div>
         </div>
         </div>
@@ -70,7 +71,7 @@ UserProfile()
             <button onClick={()=>{setRouteChoose("videos")}} className="profileOptionsBtn">Videos</button>
             <button onClick={()=>{setRouteChoose("photos")}} className="profileOptionsBtn">Photos</button>
         <div style={{position:"absolute",right:"20px",top:'26px'}}>
-        <button className="profileOptionsBtn" onClick={addFriend}>add friend</button>
+        <button className="profileOptionsBtn_" onClick={addFriend}>add</button>
         </div>
         </div>
         </div>
@@ -107,7 +108,7 @@ UserProfile()
 
         <div className={routeChoose == "posts" ? "profilePosts" : "profileRouteNone"}>
 
-            <div className='contentParent'>
+            <div className='contentParent_'>
     {user ? user.userPostsData.map((post) =>{
             return(
                 <div key={post._id} className='contentChildCont' >
@@ -121,7 +122,7 @@ UserProfile()
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-        {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentImgView" controls/>}
+        {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentVideoView" controls/>}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -146,7 +147,7 @@ UserProfile()
         </div>
         
         <div className={routeChoose == "videos" ? "profileVideos" : "profileRouteNone"}>
-        <div className='contentParent'>
+        <div className='contentParent_'>
     {user ? user.userPostsData.map((post) =>{
             return(
                 <div key={post._id} className={post.videoUrl ? 'contentChildCont' :"profileRouteNone"} >
@@ -160,7 +161,7 @@ UserProfile()
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-            {post.videoUrl ?  <video src={post.videoUrl} className="contentImgView" controls/> : ""}
+            {post.videoUrl ?  <video src={post.videoUrl} className="contentVideoView" controls/> : ""}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -185,7 +186,7 @@ UserProfile()
         </div>
         
         <div className={routeChoose == "photos" ? "profilePhotos" : "profileRouteNone"}>
-        <div className='contentParent'>
+        <div className='contentParent_'>
     {user ? user.userPostsData.map((post) =>{
             return(
                 <div key={post._id} className={post.imgUrl ? 'contentChildCont' :"profileRouteNone"} >

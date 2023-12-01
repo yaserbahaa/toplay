@@ -55,11 +55,11 @@ export default function ASideBar(props){
         <p className="aSideBarUsername" onClick={profile}>{props.tokenData.username}</p>
         </div>
         <div className="aSideBarUploadParent"> 
-            <button className="aSideBarUpload" onClick={()=>{setShow(true) ; document.body.style.overflow='hidden' }}>Post / Story</button>
+            <button className="aSideBarUpload" onClick={()=>{setShow(true) ; document.body.style.overflow='hidden hidden' }}>Post / Story</button>
         </div>
         </div>
 
-     <div onClick={()=>{setShow(false); document.body.style.overflow='auto'}} className={show ? 'showBlur': 'dontShowBlur'} >
+     <div onClick={()=>{setShow(false); document.body.style.overflow='hidden auto'}} className={show ? 'showBlur': 'dontShowBlur'} >
     </div> 
 
      <div className={show ? 'show': 'dontShow'} >

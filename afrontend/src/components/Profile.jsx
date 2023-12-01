@@ -144,16 +144,16 @@ export default function Profile(props){
             console.log("logout faild");
         }    
     }
-    const resetScroll =()=>{
-        document.body.style.overflow='auto'
-    }
-    resetScroll()
     function userProifle(e){
         const userId = e.target.getAttribute("data-userid")
         Navigate(`/profile/id/${userId}`)
-        }
-
+    }
+    
     useEffect(()=>{
+        const resetScroll =()=>{
+            document.body.style.overflow='hidden auto'
+        }
+        resetScroll()
         async function profilePosts(){
             try{
                 const resp = await axios.get("http://localhost:3000/ownerProfileData",{withCredentials:true})
@@ -177,25 +177,26 @@ export default function Profile(props){
         <div className="profileImgUsernameContParent">
         <div className="profileImgUsernameCont">
             <div className="profileImgCont">
-            <label>
+            <label className="profileImgLabel">
         <input type="file" onChange={handleUploadChagne}/>
             {previewUploadImg ? <img className="profileImg" src={previewUploadImg} alt="" /> : <img className="profileImg" src={tokenData.icon} alt="" />}
         </label>
             </div>
             <div className="profileUsernameCont">
                 <p className="profileUsername">{tokenData.username}</p>
-                <span onClick={()=>{setRouteChoose("friends")}} style={{color:"#676767",cursor:"pointer"}}>{tokenData.friendsData ? Object.keys(tokenData.friendsData).length : ""} friends</span>
+                <span onClick={()=>{setRouteChoose("friends")}} style={{color:"#676767",cursor:"pointer"}}>{tokenData.friendsData ? Object.keys(tokenData.friendsData).length : ""}friends</span>
+                <button className="profileOptionsBtn__" onClick={logout}>logout</button>
             </div>
         </div>
         </div>
         <div className="profileOptionsContParent">
         <div className="profileOptionsCont">
-            <button onClick={()=>{setRouteChoose("friends")}} className="profileOptionsBtn">Friends</button>
+            <button onClick={()=>{setRouteChoose("friends")}} className="profileOptionsBtnFriends">Friends</button>
             <button onClick={()=>{setRouteChoose("posts")}} className="profileOptionsBtn">Posts</button>
             <button onClick={()=>{setRouteChoose("videos")}} className="profileOptionsBtn">Videos</button>
             <button onClick={()=>{setRouteChoose("photos")}} className="profileOptionsBtn">Photos</button>
-        <div style={{position:"absolute",right:"20px",top:'26px'}}>
-        <button className="profileOptionsBtn" onClick={logout}>logout</button>
+        <div style={{position:"absolute",right:"20px",top:'28px'}}>
+        <button className="profileOptionsBtn_" onClick={logout}>logout</button>
         </div>
         </div>
         </div>
@@ -206,13 +207,13 @@ export default function Profile(props){
 
     <div className={routeChoose == "friends" ? "profileFriendsContParent" : "profileRouteNone"}>
 
-    <div className={"profileFriendsTilteCont"}>
-    <h1 className={  "profileFriendsTilte" }>
+    <div className="profileFriendsTilteCont">
+    <h1 className="profileFriendsTilte">
     your friends
     </h1>
     </div>
 
-    <div className={"profileFriendsCont"}>
+    <div className="profileFriendsCont">
     {tokenData ? tokenData.friendsData.map(friend =>{
         return(
             <div key={friend._id} className="profileFriends">
@@ -232,7 +233,7 @@ export default function Profile(props){
 
         <div className={routeChoose == "posts" ? "profilePosts" : "profileRouteNone"}>
 
-            <div className='contentParent'>
+            <div className='contentParent_'>
     {posts ? posts.map((post) =>{
             return(
                 <div key={post._id} className='contentChildCont' >
@@ -246,7 +247,7 @@ export default function Profile(props){
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-            {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentImgView" controls/>}
+            {post.imgUrl ? <img  src={post.imgUrl} alt="" className="contentImgView"/> : <video src={post.videoUrl} className="contentVideoView" controls/>}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -271,10 +272,10 @@ export default function Profile(props){
         </div>
         
         <div className={routeChoose == "videos" ? "profileVideos" : "profileRouteNone"}>
-        <div className='contentParent'>
+        <div className='contentParent_'>
     {posts ? posts.map((post) =>{
             return(
-                <div key={post._id} className={post.videoUrl ? 'content' :"profileRouteNone"} >
+                <div key={post._id} className={post.videoUrl ? 'contentChildCont' :"profileRouteNone"} >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />
@@ -285,7 +286,7 @@ export default function Profile(props){
         {/* <p className="ContentCreatedAt" > {`* Created At ${post.createdAt} *`}</p> */}
         </div>
         </div>
-            {post.videoUrl ?  <video src={post.videoUrl} className="contentImgView" controls/> : ""}
+            {post.videoUrl ?  <video src={post.videoUrl} className="contentVideoView" controls/> : ""}
         <div style={{display:'flex',marginTop:'5px',gap:"8px"}}>
         {/* <img data-postid={post._id} data-like={post.like} onClick={like} className={LikeToggle ? 'LikeDefultDis':'LikeDefult'} src={LikeDefult} alt="" style={{cursor:"pointer"}}/> */}
         {/* <img data-postid={post._id} data-unlike={post.like} onClick={unLike} className={LikeToggle ? 'like':'LikeDis'} src={Like} alt="" style={{cursor:"pointer"}}/> */}
@@ -310,10 +311,10 @@ export default function Profile(props){
         </div>
         
         <div className={routeChoose == "photos" ? "profilePhotos" : "profileRouteNone"}>
-        <div className='contentParent'>
+        <div className='contentParent_'>
     {posts ? posts.map((post) =>{
             return(
-                <div key={post._id} className={post.imgUrl ? 'content' :"profileRouteNone"} >
+                <div key={post._id} className={post.imgUrl ? 'contentChildCont' :"profileRouteNone"} >
         <div style={{display:"flex",alignContent:"center",flexWrap:"wrap", marginBottom:"10px" ,position:"relative"}}>
         <div className='contentImgCont' >
             <img className="contentImg" data-userid={post.id} onClick={userProifle} src={post.icon} alt="" />

@@ -53,12 +53,22 @@
     justify-content: center;
 }
 
+.profileImgLabel{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
 .profileImg{
-    width: 168px;
-    height: 168px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     cursor: pointer;
 }
+
 
 .profileUsernameCont{
     width: fit-content;
@@ -91,14 +101,25 @@
     align-content: center;
     flex-wrap: wrap;
     position: relative;
+    gap: 23px;
 }
 
 .profileOptionsBtn{
     border: none;
     color: white;
-    margin-left: 20px;
     cursor:pointer;
     background-color: rgb(67 64 64 /0%);
+    padding: 0px;
+
+
+}
+
+.profileOptionsBtnFriends{
+    border: none;
+    color: white;
+    cursor:pointer;
+    background-color: rgb(67 64 64 /0%);
+    padding: 0px;
 }
 
 
@@ -138,7 +159,7 @@
 }
 
 .profileFriends{
-    width: 396px;
+    width: 33%;
     height: 140px;
     display: flex;
     align-content: center;
@@ -192,9 +213,7 @@
 
 .profilePosts{
     border-radius: 11px;
-    margin-top: 18px;
-    width: 75%;
-    background-color: rgb(67 64 64 / 44%);
+    width: 100%;
     display: flex;
     justify-content: center;
 }
@@ -202,18 +221,43 @@
 
 .profileVideos{
     border-radius: 11px;
-    margin-top: 18px;
-    width: 75%;
-    background-color: rgb(67 64 64 / 44%);
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .profilePhotos{
     border-radius: 11px;
-    margin-top: 18px;
-    width: 75%;
-    background-color: rgb(67 64 64 / 44%);
+    width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.profileOptionsBtn_{
+    border: none;
+    color: white;
+    margin-left: 20px;
+    cursor:pointer;
+    background-color: rgb(67 64 64 /0%);
+    padding: 0px;
+
+}
+
+.profileOptionsBtn__{
+    display: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(67 64 64 /0%);
+    padding: 0px;
+    margin-left: -46px;
+}
+
+.contentParent_{
+    display: flex;
+    width: 594px;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    margin-top: 35px;
 }

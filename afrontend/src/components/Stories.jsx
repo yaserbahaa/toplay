@@ -28,15 +28,11 @@ export default function Stores(props){
             const icon = e.target.getAttribute("data-icon")
             const username = e.target.getAttribute("data-username")
             const id = e.target.getAttribute("data-id")
-
-            console.log(video);
-            console.log(img);
             if(img){
                 setStoryImg(img)
                 setShowStory(true)
                 setStoryData({icon:icon,username:username,id:id})
                 document.body.style.overflow='hidden'
-
             }
             else{
                 setStoryVideo(video)

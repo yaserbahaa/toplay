@@ -38,7 +38,7 @@ export default function Content(props){
     function userProifle(e){
     const userId = e.target.getAttribute("data-userid")
     navigate(`/profile/id/${userId}`)
-    document.body.style.overflow='auto'
+    document.body.style.overflow='hidden auto'
 
     }
 

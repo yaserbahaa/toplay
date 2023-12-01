@@ -2,13 +2,15 @@
 
 /* colors:1-main:#18191a,2-##282a2f,3-#35383b */
 html{
-  overflow-x: hidden;
+  overflow: hidden auto;
 }
 body{
     font-family: Helvetica, Arial, sans-serif;
     background-color: #18191a;
     margin: 0px;
     padding: 0px;
+    overflow: hidden auto;
+
 }
 ::-webkit-scrollbar { 
   width: 5px;
@@ -35,7 +37,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     opacity: 1; /* Firefox */
   }
   .show{
-    width: 470px;
+    width: 32.376%;
     height: 540px;
     background-color: #242526;
     position: fixed;
@@ -93,6 +95,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     height: 450px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
   }
   .dontShowPost{
@@ -100,6 +103,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
   }
 
   .showStory{
+    width: 100%;
     margin-top: 17px;
     height: 450px;
     display: flex;
@@ -294,7 +298,7 @@ textarea::-webkit-scrollbar-thumb {
 
 
 
-.uploadParent{
+/* .uploadParent{
   height: 338px;
   width: 454px;
   margin-left: 7px;
@@ -317,7 +321,7 @@ textarea::-webkit-scrollbar-thumb {
   width: 432px;
   margin: 11px;
   border-radius: 4px;
-}
+} */
 .uploadHover:hover .upload{
   background-color: rgb(88, 88, 88);
 
@@ -329,15 +333,20 @@ textarea::-webkit-scrollbar-thumb {
   height: 76px;
   flex-wrap: wrap;
   margin-top: 15px;
+  width: 100%;
 }
 .btnSumbitPost{
   height: 29px;
-  width: 140px;
+  width: 29.79%;
   outline: none;
   border: none;
   border-radius: 4px;
   background-color: white;
   cursor: pointer;
+  display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 
@@ -360,6 +369,9 @@ textarea::-webkit-scrollbar-thumb {
 @media (max-width:1460px) {
   .BSideBar{
     width: 315px;
+  }
+  .show{
+    width: 35.376%;
   }
   .ASideBarParent{
     width: 260px;
@@ -384,6 +396,9 @@ textarea::-webkit-scrollbar-thumb {
   }
 }
 @media (max-width:1350px  ) {
+  .show{
+    width: 37.376%;
+  }
   .navBarSearch{
     width: 182px;
   }
@@ -416,6 +431,12 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 @media (max-width:1250px  ) {
+  .profileFriends{
+    width: 50%;
+  }
+  .show{
+    width: 39.376%;
+  }
   .storyGrandCont{
     gap: 14px;
   }
@@ -448,6 +469,9 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 @media (max-width:1185px  ) {
+  .show{
+    width: 41.376%;
+  }
   .storyGrandCont{
     gap: 11px;
   }
@@ -467,8 +491,8 @@ textarea::-webkit-scrollbar-thumb {
   /* .storyGrandCont{
     gap: 15px;
   }
-.storyParent {
-  width: 50px;
+  .storyParent {
+    width: 50px;
 }
 .storyCont{
   height: 48px;
@@ -480,6 +504,9 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 @media (max-width:1130px  ) {
+  .show{
+    width: 44.376%;
+  }
   .storyGrandCont{
     gap: 8px;
   }
@@ -493,15 +520,15 @@ textarea::-webkit-scrollbar-thumb {
     margin-left: 4px;
   }
   .navBarGamesCont{
-
+    
     width: 380px;
     gap: 65px;
   }
   /* .storyGrandCont{
     gap: 15px;
   }
-.storyParent {
-  width: 50px;
+  .storyParent {
+    width: 50px;
 }
 .storyCont{
   height: 48px;
@@ -512,9 +539,23 @@ textarea::-webkit-scrollbar-thumb {
 
 }
 
+@media (max-width:1100px){
+  .profileFriends{
+    width: 43%;
+  }
+}
 
 
 @media (max-width:1020px ) {
+  .createPostHr{
+    margin: 0px 30px;
+  }
+  .createPostGamesCont{
+    width: 16.62%;
+  }
+  .show{
+    width: 48.376%;
+  }
   .storyGrandCont{
     gap:17px;
   }
@@ -561,40 +602,42 @@ textarea::-webkit-scrollbar-thumb {
 
 }
 
-@media (max-width:720px  ) {
 
-  ::-webkit-scrollbar { 
-    width: 3px;
-  } 
-
-  .navbarProfileImgCont{
-    display: none;
+@media (max-width: 950px){
+  .profileFriends{
+    display: flex;
+    justify-content: center;
+    width: 100%;
   }
+  .profileFriendsImgCont{
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 850px){
+  .show {
+    width: 55.376%;
+  }
+}
+
+
+@media (max-width: 720px){
   .iconCont{
     display: none;
   }
   .AsideBarToplayIcon{
     display: block;
   }
-  /* .storyGrandCont{
-    gap: 15px;
+  .navbarProfileImgCont{
+    display: none;
   }
-.storyParent {
-  width: 50px;
-}
-.storyCont{
-  height: 48px;
-}
-.storyImg{
-  height: 46px;
-} */
-
-}
-
-@media(max-width:490px){
-
-
-.navBarGamesCont {
+  ::-webkit-scrollbar { 
+    width: 3px;
+  } 
+  .show{
+    width: 64.376%;
+  }
+  .navBarGamesCont {
   width: 421px;
   gap: 75px;
 }
@@ -603,7 +646,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 .contentChildCont{
   width: 450px;
-
+  
 }
 .storyGrandCont{
   gap: 15px;
@@ -614,7 +657,7 @@ textarea::-webkit-scrollbar-thumb {
 .storyCont{
   height: 48px;
   width:48px ;
-
+  
 }
 .storyImg{
   height: 46px;
@@ -622,8 +665,44 @@ textarea::-webkit-scrollbar-thumb {
 }
 }
 
+@media(max-width:650px){
+  .show{
+    width:77.376%;
+    }
+  }
+
+  @media(max-width:590px){
+    .show{
+      width:76.376%;
+      }
+    }
+
+    @media (max-width: 510px){
+    .show {
+        width: 83.376%;
+    }
+    .profileOptionsBtn_{
+      display: none;
+    }
+    .profileOptionsBtn__{
+      display: block;
+    }
+    .profileOptionsCont{
+      justify-content: center;
+    }
+    }
+
+    @media (max-width: 485px){
+      .showStoryCont {
+          width: 92.976%;
+      }
+      }
+
 
 @media(max-width:470px){
+  .show{
+    width: 87.376%;
+  }
 
 .navBarGamesCont {
   width: 390px;
@@ -652,6 +731,9 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 @media(max-width:435px){
+  .show{
+    width: 91.376%;
+  }
   .navBarGamesCont {
     width: 354px;
     gap: 42px;
@@ -682,9 +764,20 @@ textarea::-webkit-scrollbar-thumb {
   }
 
   @media(max-width:400px){
-
-
-
+    .profileImgCont{
+      width: 161px;
+      height: 161px;
+      top: -71px;
+    }
+    .profileUsernameCont{
+      margin-left: 185px;
+    }
+    .show{
+      width: 92.376%;
+    }
+    .createPostHr {
+      margin: 0px 22px;
+  }
     .navBarGamesCont {
     width: 332px;
     gap: 40px;
@@ -715,9 +808,121 @@ textarea::-webkit-scrollbar-thumb {
     }
     }
 
+    @media(max-width:370px){
+      .profileImgCont{
+        width: 158px;
+        height: 158px;
+        top: -68px;
+      }
+      .profileUsernameCont{
+        margin-left: 179px;
+      }
+    }
 
-    
+    @media(max-width:360px){
+      .profileImgCont{
+        width: 154px;
+        height: 154px;
+        top: -63px;
+      }
+      .profileUsernameCont{
+        margin-left: 173px;
+      }
+
+    }
+    @media(max-width:350px){
+      .profileImgCont{
+        width: 150px;
+        height: 150px;
+        top: -59px;
+      }
+      .profileUsernameCont{
+        margin-left: 167px;     
+       }
+    }
+
+    @media(max-width:343px){
+      .profileImgCont{
+        width: 144px;
+        height: 144px;
+        top: -53px;
+      }
+      .profileUsernameCont{
+        margin-left: 161px;     
+       }
+
+    }
+    @media(max-width:333px){
+      .profileImgCont{
+        width: 140px;
+        height: 140px;
+        top: -49px;
+      }
+      .profileUsernameCont{
+        margin-left: 156px;     
+       }
+
+    }
+    @media(max-width:326px){
+      .profileImgCont{
+        width: 134px;
+        height: 134px;
+        top: -43px;
+      }
+      .profileUsernameCont{
+        margin-left: 149px;     
+       }
+       .profileUsername{
+        font-size: 30px;
+       }
+
+       .profileOptionsBtn__{
+        margin-left: -39px;
+       }
+    }
+
+    @media(max-width:307px){
+      .profileImgCont{
+        width: 128px;
+        height: 128px;
+        top: -37px;
+      }
+      .profileUsernameCont{
+        margin-left: 143px;     
+       }
+       .profileUsername{
+        font-size: 27px;
+       }
+
+       .profileOptionsBtn__{
+        margin-left: -32px;
+       }
+       .profileOptionsCont{
+        gap:13px
+      }
+    }
+
+    @media(max-width:290px){
+      .profileImgCont{
+        width: 56.45%;
+      }
+      .profileUsernameCont{
+        margin-left: 64%;     
+       }
+       .profileUsername{
+        font-size: 21px;
+       }
+
+       .profileOptionsBtn__{
+        margin-left: -34%;
+       }
+
+    }
+
     @media(max-width:366px){
+      .show{
+        width: 95.376%;
+      }
       .navbarNavbar{
         height: 56px;
       }
@@ -797,6 +1002,21 @@ textarea::-webkit-scrollbar-thumb {
 
 
       @media(max-width:330px){
+        .logSigCont{
+          width: 89%;
+        }
+        .loginSumbit{
+          width:66.35%;
+        }
+        .profileHeader{
+          margin-top: 54px
+        }
+        .AsideBarshowToplay{
+          width: 92%;
+        }
+        .show {
+          width: 95.376%;
+      }
         .navbarNavbar{
           height: 53px;
         }
@@ -880,6 +1100,12 @@ textarea::-webkit-scrollbar-thumb {
 
 
         @media(max-width:295px){
+          .show {
+            width: 95.376%;
+        }
+          .createPostHr {
+            margin: 0px 7px;
+        }
           .navBarGamesCont {
             width: 89%;
             
@@ -917,6 +1143,9 @@ textarea::-webkit-scrollbar-thumb {
           }
 
           @media(max-width:243px){
+            .show {
+              width: 95.376%;
+          }
             .storyGrandCont{
               display: none;
               
@@ -930,6 +1159,12 @@ textarea::-webkit-scrollbar-thumb {
           }
 
           @media(max-width:232px){
+            .xImgParent{
+              display: none;
+            }
+            .show {
+              width: 95.376%;
+          }
             .valo{
               width: 40px;
               height: 40px;
@@ -970,3 +1205,9 @@ textarea::-webkit-scrollbar-thumb {
               height: 40px;
             }
           }
+
+
+
+
+
+          

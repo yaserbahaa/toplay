@@ -113,7 +113,7 @@ export default function Navbar(props){
 
                 <div className="navbarProfileImgNone">
                  <Link className="navBarProfileImg__" to={'/profile'}>
-                <img onClick={()=>{document.body.style.overflow='auto'}} style={{width:"100%",height:'45px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : profile} alt="" />
+                <img onClick={()=>{document.body.style.overflow='hidden auto'}} style={{width:"100%",height:'45px',borderRadius:"50%",cursor:"pointer"}} src={props.tokenData ? props.tokenData.icon : profile} alt="" />
                 </Link>
                 </div>
 

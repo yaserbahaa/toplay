@@ -23,7 +23,7 @@ function App() {
   
 
   const resetScroll =()=>{
-    document.body.style.overflow='auto'
+    document.body.style.overflow='hidden auto'
 
 }
 resetScroll()

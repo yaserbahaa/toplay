@@ -10,7 +10,7 @@ export default function ShowStory(props){
     const navigate=useNavigate()
 
     function userProifle(e){
-        document.body.style.overflow='auto'
+        document.body.style.overflowY='auto'
         navigate(`/profile/id/${storyData.id}`)
         }
 
@@ -18,7 +18,7 @@ export default function ShowStory(props){
         props.setShowStory(false)
         props.setStoryImg("")
         props.setStoryVideo("")
-        document.body.style.overflow='auto'
+        document.body.style.overflowY='auto'
 
     }
     return(<>

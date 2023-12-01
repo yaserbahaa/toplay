@@ -54,7 +54,7 @@ export default function CreatePost(props){
             setText("")
             setGame("")
             props.setShow(false)
-            document.body.style.overflow='auto'
+            document.body.style.overflow='hidden auto'
         }
         else{
             console.log("upload required");
@@ -140,7 +140,7 @@ export default function CreatePost(props){
             setGame("")
             setStoryText("")
             props.setShow(false)
-            document.body.style.overflow='auto'
+            document.body.style.overflow='hidden auto'
         }
         else{
             console.log("upload required");
@@ -204,13 +204,13 @@ export default function CreatePost(props){
 
 return(<>
     <div style={{display:'flex',justifyContent:"center",position:"relative",alignContent:"center",flexWrap:"wrap",width:"100%",height:"55px"}}>
-    <div className='imgParent' style={{position:"absolute",cursor:"pointer",left:"0px",top:"14px",display:"flex",justifyContent:"center",alignContent:"center",flexWrap:"wrap",borderRadius:"50%",height:"33px",width:"33px",margin:"0px 0px 0px 15px"}}  onClick={()=>{props.setShow(false);document.body.style.overflow='auto'}}>
+    <div className='xImgParent' onClick={()=>{props.setShow(false);document.body.style.overflow='hidden auto'}}>
         <img src={x} alt=''/>
     </div>
     <div>
     <h2 className={show ? 'postToggleTrue':'postToggleFalse'} onClick={()=>{setShow(show ? show : !show) }}  >post</h2>
     </div>
-    <hr style={{margin:"0px 50px 0px 50px"}}/>
+    <hr className="createPostHr" />
     <div>
     <h2 className={show ? 'storyToggleTrue':'storyToggleFalse'} onClick={()=>{setShow(show ? !show : show )}} >story</h2>
     </div>
@@ -220,15 +220,15 @@ return(<>
 
     <div className={show ? 'showPost':'dontShowPost'}>
 
-    <div style={{display:"flex",paddingLeft:"11px",width: "459px"}}>
+    <div style={{display:"flex",paddingLeft:"11px",width: "18%"}}>
     <div className='createPostImgCont'>
     <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt=""  className='createPostImg'/>
     </div>
     <p style={{fontSize:"13px",color:"white",marginLeft:"10px"}}>{props.tokenData.username ? props.tokenData.username : "user"}</p>
     </div>
 
-    <div>
-        <textarea value={text} onChange={(e)=> setText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"378px",marginTop:"13px",paddingLeft:"14px",height:'102px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
+    <div style={{width:'100%'}}>
+        <textarea value={text} onChange={(e)=> setText(e.target.value)} maxLength={425} placeholder='Your Text' style={{width:"79%",marginTop:"13px",paddingLeft:"14px",height:'102px',backgroundColor:"#242526",resize:"none",outline:"none",color:"white",border:"none"}} rows="4" cols="50">
         </textarea>
     <div className="createPostGamesCont">
         <button onClick={()=>{setGame("lol") ;setLol(true);setValorant(false);setAll(false);setCsgo2(false);setWarz(false)}} className={lol ? "createPostlol":"createPostGamesBtn"}>lol</button>
@@ -263,7 +263,7 @@ return(<>
 
     <div className={show ? 'dontShowStort':'showStory'}>
 
-    <div style={{display:"flex",marginBottom:"13px",paddingLeft:"11px" ,width: "459px"}}>
+    <div style={{display:"flex",marginBottom:"13px",paddingLeft:"11px" ,width: "96.8%"}}>
     <div className='createPostImgCont'>
     <img src={props.tokenData.icon ? props.tokenData.icon : ""} alt="" className='createPostImg'/>
     </div>
