@@ -16,10 +16,10 @@ export default function Warz(props){
             try{
                 const resp = await axios.get('http://localhost:3000/dataWarz',{withCredentials: true,})
                 setData(resp.data)
-                console.log("post&story data has been resived");
+                // console.log("post&story data has been resived");
             }
             catch{
-                console.log("could not get user data");
+                // console.log("could not get user data");
             }
         }
         getData()

@@ -10,7 +10,7 @@ export default function BSideBar(props){
     const navigate = useNavigate()
     function userProfile(e){
         const friendId = e.target.getAttribute("data-friendid")
-        console.log(friendId);
+        // console.log(friendId);
         navigate(`/profile/id/${friendId}`)
         }
     return(<>

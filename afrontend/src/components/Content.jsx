@@ -57,9 +57,7 @@ export default function Content(props){
             navigate("/warz")
         }
     }
-    useEffect(()=>{
-        // console.log(test);
-    },[])
+
         return(<>
 
 

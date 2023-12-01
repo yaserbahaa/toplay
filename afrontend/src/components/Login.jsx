@@ -61,7 +61,6 @@ export default function Login(props){
         catch{
             setExist(true)
             console.log("username exist or something went wroung");
-            console.log(exist);
             
         }    
     }

@@ -17,16 +17,15 @@ export default function Cs2(props){
             try{
                 const resp = await axios.get('http://localhost:3000/dataCsgo2',{withCredentials: true,})
                 setData(resp.data)
-                console.log("post&story data has been resived");
+                // console.log("post&story data has been resived");
             }
             catch{
-                console.log("could not get user data");
+                // console.log("could not get user data");
             }
         } 
         getData()
         props.setRouteColor("csgo2") 
     },[])
-    console.log(props.test);
     return(<> 
             <Navbar tokenData={props.tokenData} routeColor={props.routeColor}/>
             <Stories data={props.data.stories}/>

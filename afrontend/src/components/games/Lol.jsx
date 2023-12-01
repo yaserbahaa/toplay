@@ -19,7 +19,7 @@ export default function Lol(props){
                 setData(resp.data)
             }
             catch{
-                console.log("could not get user data");
+                // console.log("could not get user data");
             }
         }
         getData()
