@@ -37,7 +37,7 @@ mongoose.connect(process.env.MONGODB_URL)
     console.log("database is runnig")
 })
 .catch(err =>{
-    console.log("database cant run");
+    console.log("database cant run ");
 })
 
 
