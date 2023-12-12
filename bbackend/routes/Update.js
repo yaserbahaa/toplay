@@ -13,9 +13,9 @@ require('dotenv').config()
 
 router.patch("/updateIcon",async(req,res)=>{
 try{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
         if(err){
-            console.log("user is not auth");
+            console.log("user is not auth when trying update icon");
         }
         else{
             await users.updateOne({_id:decoded.id},{icon:req.body.iconUrl})
@@ -31,9 +31,9 @@ try{
 })
 router.patch("/updateCover",async(req,res)=>{
     try{
-        jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+        jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
             if(err){
-                console.log("user is not auth");
+                console.log("user is not auth when trying to update cover");
             }
             else{
                 const data = await users.updateOne({_id:decoded.id},{cover:req.body.coverUrl})

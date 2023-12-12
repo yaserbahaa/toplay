@@ -14,7 +14,7 @@ export default function Valo(props){
     useEffect(()=>{
         const getData = async() =>{
             try{
-                const resp = await axios.get('http://localhost:3000/dataValorant',{withCredentials: true,})
+                const resp = await axios.get('https://toplayserver.onrender.com/dataValorant',{withCredentials: true,credentials:"include"})
                 setData(resp.data)
                 // console.log("post&story data has been resived");
             }

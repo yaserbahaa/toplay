@@ -15,7 +15,7 @@ export default function Cs2(props){
     useEffect(()=>{
         const getData = async() =>{
             try{
-                const resp = await axios.get('http://localhost:3000/dataCsgo2',{withCredentials: true,})
+                const resp = await axios.get('https://toplayserver.onrender.com/dataCsgo2',{withCredentials: true,credentials:"include"})
                 setData(resp.data)
                 // console.log("post&story data has been resived");
             }

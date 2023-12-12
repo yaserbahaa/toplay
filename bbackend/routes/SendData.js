@@ -12,7 +12,7 @@ require('dotenv').config()
 
 router.get("/data", (req,res)=>{
     try{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
             if(err){
                 console.log("could not send data to client bec"+err);
                 res.sendStatus(500)
@@ -32,9 +32,9 @@ router.get("/data", (req,res)=>{
     })
 router.get("/dataLol", (req,res)=>{
     try{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
             if(err){
-                console.log("could not send data to client bec"+err);
+                console.log("could not send data to client bec bec user is not auth from data lol");
                 res.sendStatus(500)
             }
             else{
@@ -50,9 +50,9 @@ router.get("/dataLol", (req,res)=>{
     })
     router.get("/dataValorant", (req,res)=>{
         try{
-        jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+        jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
                 if(err){
-                    console.log("could not send data to client bec"+err);
+                    console.log("could not send data to client bec user is not auth from data Valorant");
                     res.sendStatus(500)
                 }
                 else{
@@ -68,9 +68,9 @@ router.get("/dataLol", (req,res)=>{
         })
         router.get("/dataCsgo2", (req,res)=>{
             try{
-            jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+            jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
                     if(err){
-                        console.log("could not send data to client bec"+err);
+                        console.log("could not send data to client bec bec user is not auth from data csgo2");
                         res.sendStatus(500)
                     }
                     else{
@@ -86,9 +86,9 @@ router.get("/dataLol", (req,res)=>{
             })
             router.get("/dataWarz", (req,res)=>{
                 try{
-                jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function (err,decoded){
+                jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function (err,decoded){
                         if(err){
-                            console.log("could not send data to client bec"+err);
+                            console.log("could not send data to client bec bec user is not auth from data warz");
                             res.sendStatus(500)
                         }
                         else{
@@ -104,10 +104,10 @@ router.get("/dataLol", (req,res)=>{
                 })
 
 router.get('/tokenData',async(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
         if(err){
             res.sendStatus(500)
-            console.log("user is not authentcated");
+            console.log("user is not authentcated from tokendata");
         }
         else{
             const data =await users.findOne({_id:decoded.id})
@@ -119,10 +119,10 @@ router.get('/tokenData',async(req,res)=>{
 
 
 router.get("/ownerProfileData", async(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
         if(err){
             res.sendStatus(500)
-            console.log("user is not authentcated");
+            console.log("user is not authentcated from ownerProfileData");
         }
         else{
             const postData =await posts.find({id:decoded.id}).sort({createdAt:-1})
@@ -145,9 +145,9 @@ router.get("/userProfile/id/:id", async(req,res)=>{
 
 
 router.get("/userFriends",(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
         if(err){
-            console.log("user is not auth");
+            console.log("user is not auth from userfriends");
         }
         else{
             const data = await friends.find({ownerId:decoded.id}).sort({createdAt:-1})

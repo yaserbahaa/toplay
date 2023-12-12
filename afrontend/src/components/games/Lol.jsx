@@ -15,7 +15,7 @@ export default function Lol(props){
     useEffect(()=>{
         const getData = async() =>{
             try{
-                const resp = await axios.get('http://localhost:3000/dataLol',{withCredentials: true,})
+                const resp = await axios.get('https://toplayserver.onrender.com/dataLol',{withCredentials: true,credentials:"include"})
                 setData(resp.data)
             }
             catch{

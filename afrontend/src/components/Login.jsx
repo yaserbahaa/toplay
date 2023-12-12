@@ -26,15 +26,16 @@ export default function Login(props){
     const navigate = useNavigate()  
     
     useEffect(()=>{
+
         const isHeLogedIn = async() =>{
             try{
-                const resp = await axios.post('http://localhost:3000/checkAuth',{},{withCredentials: true,})
-                console.log("user already authetcated"); 
-                setUser(resp.data)
+                const resp = await axios.post('https://toplayserver.onrender.com/checkAuth',{},{withCredentials: true,credentials:"include"})
+                console.log("user already auth from isHelogedIn in login route"); 
                 navigate('/')
             }
             catch{
-                console.log("user is not authetcated");
+                console.log("user is not auth from isHelogedIn in login route");
+                props.setAuth("wait")
             }
         }
         isHeLogedIn()
@@ -46,7 +47,7 @@ export default function Login(props){
         e.preventDefault()
         if(passwordSig == passwordRepet){
             try{
-                const resp = await axios.post('http://localhost:3000/signup',{
+                const resp = await axios.post('https://toplayserver.onrender.com/signup',{
                     username:usernameSig,
                     password:passwordSig,
                     icon:iconProfile,
@@ -73,7 +74,7 @@ export default function Login(props){
 const login = async(e)=>{
         e.preventDefault()
     try{
-        const resp = await axios.post('http://localhost:3000/login',{username:usernameLog,password:passwordLog,},{withCredentials: true,})
+        const resp = await axios.post('https://toplayserver.onrender.com/login',{username:usernameLog,password:passwordLog,},{withCredentials: true,credentials:"include"})
         setUsernameLog('')
         setPasswordLog('')
         console.log("login sucsses");
@@ -93,46 +94,53 @@ const login = async(e)=>{
     
         return(<>
     <div className='logSigCont' >
+
     <div className={signupToggle ? 'loginDis':'login'} >
+
         <div className="loginIconCont">
         <img className="loginIcon" src={ninja} alt="" />
         </div>
 
-                <div className="loginLogCont">
+                <form className="loginLogCont" onSubmit={login}>
                 <input className="loginUsername" type="text" value={usernameLog} onChange={(e)=>{setUsernameLog(e.target.value)}} required minLength={3} maxLength={8} placeholder="username" />
                 <input className="loginPassword" type="password" value={passwordLog} onChange={(e)=>{setPasswordLog(e.target.value)}} required minLength={4} maxLength={25} placeholder="password"  />
                 <div className="loginSumbitCont">
-                <button className="loginSumbit" onClick={login}>Login</button>
+                <button className="loginSumbit">Login</button>
                 </div>
              <hr className="loginHr" />  
-                </div>
+
+             </form>
 
             <div className="loginNoAccCont">
-            <h6 className="loginNoAcc" >Dont have an account? <span onClick={()=>{setSignupToggle(true)}}>Sign in</span></h6>
+            <h6 className="loginNoAcc" >Dont have an account? <span onClick={()=>{setSignupToggle(true)}} style={{cursor:"pointer",color:"white"}}>Sign in</span></h6>
             </div>
    
     </div>
 
 
 
-
-    <div className={signupToggle ? 'signup':'signupDis'} >
-        <img style={{width:"72px",marginLeft:"123px",marginTop:"8px"}} src={ninja} alt="" />
-            <form onSubmit={signup} style={{display:"flex", alignContent:'center',flexWrap:"wrap",flexDirection:"column",gap:"15px",marginTop:"21px"}}>
-                <input type="text" value={usernameSig} onChange={(e)=>{setUsernameSig(e.target.value)}} required minLength={3} maxLength={8} placeholder="username" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}}/>
-                {/* <input type="email" placeholder="email" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}}/> */}
-                <input type="password" value={passwordSig} onChange={(e)=>{setPasswordSig(e.target.value)}} required minLength={4} maxLength={25} placeholder="password" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}} />
-                <input type="password" value={passwordRepet} onChange={(e)=>{setPasswordRepet(e.target.value)}} required minLength={4} maxLength={25} placeholder="repet password" style={{width:"165px",marginLeft:"72.5px",marginRight:"72.5px",height:"18px",outline:"none",borderRadius:'2px',backgroundColor:"rgba(63, 63, 63, 0.94)",border:"none",color:"white",paddingLeft:'6px'}} />
-
-                <button style={{marginLeft:'116px',marginTop:'10px',width:"86px",backgroundColor:'rgb(131 131 131)',color:"white",borderRadius:'3px',border:'1px solid rgb(51, 51, 51)',cursor:"pointer"}}>Sign in</button>
+    <div className={signupToggle ? 'login':'signupDis'} >
+    <div className="loginIconCont">
+        <img className="loginIcon" src={ninja} alt="" />
+        </div>
+            <form className="loginLogCont" onSubmit={signup}>
+                <input type="text" className="loginUsername" value={usernameSig} onChange={(e)=>{setUsernameSig(e.target.value)}} required minLength={3} maxLength={8} placeholder="username" />
+                <input type="password" className="loginPassword_" value={passwordSig} onChange={(e)=>{setPasswordSig(e.target.value)}} required minLength={4} maxLength={25} placeholder="password" />
+                <input type="password" className="loginPassword__" value={passwordRepet} onChange={(e)=>{setPasswordRepet(e.target.value)}} required minLength={4} maxLength={25} placeholder="repet password" />
+                
+                <div className="loginSumbitCont">
+                <button className="loginSumbit">Sign in</button>
+                </div>
+                <hr className="loginHr" />  
             </form>
             
-        {/* <hr style={{width:'200px',marginTop:"30px"}}/>   */}
-            {/* <h5 style={{marginLeft:"92px" ,marginBottom:"0px",color:"white"}}>contuine with google</h5> */}
-            <h6 style={{marginLeft:'79px',marginTop:"29px",color:"white"}}>already have an account? <span onClick={()=>{setSignupToggle(false)}} style={{cursor:"pointer"}}>Login</span></h6>
+            <div className="loginNoAccCont">
+            <h6 className="loginNoAcc">already have an account? <span onClick={()=>{setSignupToggle(false)}} style={{cursor:"pointer",color:"white"}}>Login</span></h6>
+            </div>
 
     </div>
 
     </div>
+
 </>)
 }

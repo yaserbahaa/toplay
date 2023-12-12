@@ -41,6 +41,8 @@
     border: none;
     outline: none;
     border-radius: 4px;
+    background: #474747;
+    color: white;
 }
 .loginPassword{
     width: 60%;
@@ -48,16 +50,23 @@
     outline: none;
     border-radius: 4px;
     margin-bottom: 15px;
+    background: #474747;
+    color: white;
 }
 .loginSumbitCont{
     display: flex;
     justify-content: center;
+    height: 19px;
 }
 .loginSumbit{
     width: 100px;
+    height: 100%;
     border: none;
     outline: none;
-    border-radius: 4px
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+
 }
 
 .loginHr{
@@ -68,12 +77,31 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 41px;
+    margin-top: 24px;
 }
 .loginNoAcc{
     width: fit-content;
-    color: white;
+    color: #959595;
     margin: 0px;
     font-weight: 900;
     font-size: 12px;
+}
+
+.loginPassword_{
+    width: 60%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #474747;
+    color: white;
+}
+
+.loginPassword__{
+    width: 60%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    margin-bottom: 11px;
+    background: #474747;
+    color: white;
 }

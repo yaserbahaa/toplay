@@ -1,9 +1,7 @@
 
 
 /* colors:1-main:#18191a,2-##282a2f,3-#35383b */
-html{
-  overflow: hidden auto;
-}
+
 body{
     font-family: Helvetica, Arial, sans-serif;
     background-color: #18191a;

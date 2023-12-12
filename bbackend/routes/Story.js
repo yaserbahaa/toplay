@@ -10,7 +10,7 @@ require('dotenv').config()
 
 
 router.post("/storeStory",(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
         if(err){
             console.log("user is not auth when trying to store his story");
         }

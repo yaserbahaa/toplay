@@ -16,7 +16,7 @@ export default function UserProfile(props){
     const Navigate = useNavigate()
     async function addFriend(){
         try{
-            const resp = await axios.post("http://localhost:3000/addFriend",{idAdd:id},{withCredentials:true})
+            const resp = await axios.post("https://toplayserver.onrender.com/addFriend",{idAdd:id},{withCredentials:true,credentials:"include"})
             console.log("user added");
         }
         catch(err){
@@ -33,7 +33,7 @@ export default function UserProfile(props){
 
         async function UserProfile(){
     try{
-        const resp = await axios.get(`http://localhost:3000/userProfile/id/${id}`,{withCredentials:true})
+        const resp = await axios.get(`https://toplayserver.onrender.com/userProfile/id/${id}`,{withCredentials:true,credentials:"include"})
         setUser(resp.data)
         console.log(resp);
         console.log("userData resived");

@@ -27,13 +27,6 @@ import menu from '../assets/icons8-menu-50.png'
 
 export default function Navbar(props){
     const [showToplay,setShowToplay]=useState(false)
-    const [valoToggle,setValoToggle]=useState(false)
-    const [lolToggle,setLolToggle]=useState(false)
-    const [csgoToggle,setCsgoToggle]=useState(false)
-    const [warzToggle,setWarzToggle]=useState(false)
-    const [test,setTest]=useState(true)
-
-
     const navigate = useNavigate()
 
 
@@ -127,12 +120,12 @@ export default function Navbar(props){
         <div className={showToplay ? "showToplay" : "dontShowToplay"}>
                 <h1 onClick={()=>{navigate("/")}} className="toplayTitle">toplay</h1>
 
-                <a className="toplayDiscord" href="">
+                <a className="toplayDiscord" href="https://discord.gg/2cRTGuD5N2">
                 {dis ? <img className="toplayDiscordImg" src={dis} alt="" /> : ""}
                 <p className="toplayDiscordTitle">discord</p>
                 </a>
 
-                <Link className="toplayDeveloper" to={"/developer"}>
+                <Link className="toplayDeveloper" to={"https://github.com/yaserbahaa"}>
                 {dev ? <img className="toplayDeveloperImg" src={dev} alt="" /> : ""}
                 <p className="toplayDeveloperTitle">developer</p>
                 </Link>

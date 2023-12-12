@@ -16,7 +16,6 @@ export default function Profile(props){
     const [coverPreviewUploadImg,SetCoverPreviewUploadImg] = useState('') 
 
 
-
     const tokenData =props.tokenData
     const Navigate = useNavigate()  
 
@@ -48,7 +47,7 @@ export default function Profile(props){
             const iconUrlStore = resp.data.url
             
             if(iconUrlStore){
-            const resp = await axios.patch('http://localhost:3000/updateIcon',{iconUrl:iconUrlStore},{withCredentials:true})
+            const resp = await axios.patch('https://toplayserver.onrender.com/updateIcon',{iconUrl:iconUrlStore},{withCredentials:true,credentials:"include"})
             console.log("img have been store it in database")
             }   
             else{
@@ -97,7 +96,7 @@ export default function Profile(props){
             const coverUrlStore = resp.data.url
             
             if(coverUrlStore){
-                const resp = await axios.patch('http://localhost:3000/updateCover',{coverUrl:coverUrlStore},{withCredentials:true})
+                const resp = await axios.patch('https://toplayserver.onrender.com/updateCover',{coverUrl:coverUrlStore},{withCredentials:true,credentials:"include"})
             console.log("img have been store it in database")
             }   
             else{
@@ -135,7 +134,7 @@ export default function Profile(props){
     
     const logout = async()=>{
         try{
-            const resp = await axios.post('http://localhost:3000/logout',{},{withCredentials: true,})
+            const resp = await axios.post('https://toplayserver.onrender.com/logout',{},{withCredentials: true,credentials:"include"})
             console.log("logout sucsses");
             console.log(resp.status);    
             Navigate("/login")
@@ -156,7 +155,7 @@ export default function Profile(props){
         resetScroll()
         async function profilePosts(){
             try{
-                const resp = await axios.get("http://localhost:3000/ownerProfileData",{withCredentials:true})
+                const resp = await axios.get("https://toplayserver.onrender.com/ownerProfileData",{withCredentials:true,credentials:"include"})
                 setPosts(resp.data)
             }
             catch{

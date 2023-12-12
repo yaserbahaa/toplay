@@ -40,8 +40,8 @@ router.post('/login',async (req,res)=>{
                     console.log(err);
                 }
                 else if (succses) {
-                const token = jwt.sign({id:data._id,username:data.username,icon:data.icon,cover:data.cover},process.env.SECRET_KEY,{expiresIn: 1000*60*60*24*7*4*360})  
-                res.cookie("token",token,{httpOnly:true,secure:false,maxAge:1000*60*60*24*7*4*360})
+                const token = jwt.sign({id:data._id,username:data.username,icon:data.icon,cover:data.cover},"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",{expiresIn: 1000*60*60*24*7*4*360})  
+                res.cookie("token",token,{httpOnly:true,sameSite:'none',secure:true,maxAge:1000*60*60*24*7*4*360})
                 console.log('password and username match in db!');
                 res.sendStatus(200)
             }else {
@@ -61,29 +61,29 @@ router.post('/login',async (req,res)=>{
 
 
 router.post('/checkAuth',(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",function(err,decoded){
         if(err){
             res.sendStatus(500)
             console.log("user is not authentcated");
         }
         else{
             res.sendStatus(200)
-            console.log("user is authentcated from home");
+            console.log("user is authentcated from checkAuth");
         }
     })
 })
 
 
 router.post('/refreshToken',(req,res)=>{
-    jwt.verify(req.cookies.token,process.env.SECRET_KEY,async function(err,decoded){
+    jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
         if(err){
             res.sendStatus(500)
-            console.log("user is not authentcated");
+            console.log("user is not authentcated from refresh Token");
         }
         else{
             const userData = await users.findOne({_id:decoded.id})
-            const token = jwt.sign({id:userData.id,username:userData.username,icon:userData.icon,cover:userData.cover},process.env.SECRET_KEY,{expiresIn:1000*60*60*24*7*4*360})
-            res.cookie("token",token,{httpOnly:true,secure:false,maxAge:1000*60*60*24*7*4*360})
+            const token = jwt.sign({id:userData.id,username:userData.username,icon:userData.icon,cover:userData.cover},"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",{expiresIn:1000*60*60*24*7*4*360})
+            res.cookie("token",token,{httpOnly:true,sameSite:'none',secure:true,maxAge:1000*60*60*24*7*4*360})
         }
     })
 })
@@ -91,9 +91,20 @@ router.post('/refreshToken',(req,res)=>{
 
 
 router.post("/logout",(req,res)=>{
-        res.clearCookie("token")
-        res.sendStatus(200)
-})
-
+        // res.clearCookie("token")
+        jwt.verify(req.cookies.token,"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",async function(err,decoded){
+            if(err){
+                res.sendStatus(500)
+                console.log("user is not authentcated from logout");
+            }
+            else{
+                const userData = await users.findOne({_id:decoded.id})
+                const token = jwt.sign({id:userData.id,username:userData.username,icon:userData.icon,cover:userData.cover},"5e293fc51421ff6a5be51018adc2a166d33edb2bcf4e375a4f880d181d45b890d2ca850fa8e070ee0be185461727862608aaf9d609814d85922e9f4843168f68",{expiresIn:0})
+                res.cookie("token",token,{httpOnly:true,sameSite:'none',secure:true,expires: new Date(Date.now() - 86400000)})
+                res.sendStatus(200)
+            }
+        })
+    })
+    
 
 module.exports = router

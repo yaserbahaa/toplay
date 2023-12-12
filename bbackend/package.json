@@ -2,29 +2,47 @@
   "name": "bbackend",
   "module": "index.js",
   "type": "commonjs",
+  "main": "server.js",
+  "private": true,
   "devDependencies": {
-    "bun-types": "latest"
+    "aws-sdk": "^2.865.0",
+    "bun-types": "latest",
+    "ignore-loader": "^0.1.2",
+    "mock-aws-s3": "^4.0.2",
+    "nock": "^13.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "go": "nodemon server.js"
+    "go": "nodemon server.js",
+    "build": "webpack"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@aws-sdk/credential-providers": "^3.465.0",
+    "@mapbox/node-pre-gyp": "^1.0.0-alpha3",
+    "@napi-rs/snappy": "^1.0.2",
+    "aws-sdk": "^2.1510.0",
+    "aws4": "^1.12.0",
     "bcrypt": "^5.1.1",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
+    "dirname": "^0.1.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
+    "file-loader": "^6.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
     "mongoose-type-url": "^2.1.0",
     "multer": "^1.4.5-lts.1",
+    "nock": "^13.4.0",
     "node-gyp": "^10.0.0",
     "nodemon": "^3.0.1",
+    "snappy": "^7.2.2",
     "universal-cookie": "^6.1.1"
   }
 }

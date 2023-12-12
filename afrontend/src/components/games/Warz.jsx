@@ -14,7 +14,7 @@ export default function Warz(props){
     useEffect(()=>{
         const getData = async() =>{
             try{
-                const resp = await axios.get('http://localhost:3000/dataWarz',{withCredentials: true,})
+                const resp = await axios.get('https://toplayserver.onrender.com/dataWarz',{withCredentials: true,credentials:"include"})
                 setData(resp.data)
                 // console.log("post&story data has been resived");
             }

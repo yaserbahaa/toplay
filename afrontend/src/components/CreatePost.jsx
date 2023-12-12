@@ -76,7 +76,7 @@ export default function CreatePost(props){
             const imgUrlStore = resp.data.url
             
             if(imgUrlStore){
-            const resp = await axios.post('http://localhost:3000/storePost',{imgUrl:imgUrlStore,text:text,game:game},{withCredentials:true})
+            const resp = await axios.post('https://toplayserver.onrender.com/storePost',{imgUrl:imgUrlStore,text:text,game:game},{withCredentials:true,credentials:"include"})
             console.log("img have been store it in database ")
             }   
             else{
@@ -95,7 +95,7 @@ export default function CreatePost(props){
             const videoUrlStore = resp.data.url
             
             if(videoUrlStore){
-            const resp = await axios.post('http://localhost:3000/storePost',{videoUrl:videoUrlStore,text:text,game:game},{withCredentials:true})
+            const resp = await axios.post('https://toplayserver.onrender.com/storePost',{videoUrl:videoUrlStore,text:text,game:game},{withCredentials:true,credentials:"include"})
             console.log("video have been store it in database");
         }   
         else{
@@ -162,7 +162,7 @@ export default function CreatePost(props){
             const storyImgUrlStore = resp.data.url
             
             if(storyImgUrlStore){
-            const resp = await axios.post('http://localhost:3000/storeStory',{storyImgUrl:storyImgUrlStore,text:text},{withCredentials:true})
+            const resp = await axios.post('https://toplayserver.onrender.com/storeStory',{storyImgUrl:storyImgUrlStore,text:text},{withCredentials:true,credentials:"include"})
             console.log("img have been store it in database ")
             }   
             else{
@@ -181,7 +181,7 @@ export default function CreatePost(props){
             const storyVideoUrlStore = resp.data.url
             
             if(storyVideoUrlStore){
-            const resp = await axios.post('http://localhost:3000/storeStory',{storyVideoUrl:storyVideoUrlStore,text:text},{withCredentials:true})
+            const resp = await axios.post('https://toplayserver.onrender.com/storeStory',{storyVideoUrl:storyVideoUrlStore,text:text},{withCredentials:true,credentials:"include"})
             console.log("video have been store it in database");
         }   
         else{
