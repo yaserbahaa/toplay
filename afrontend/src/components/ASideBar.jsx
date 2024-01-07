@@ -32,12 +32,12 @@ export default function ASideBar(props){
         <div className={showToplay ? "AsideBarshowToplay" : "dontShowToplay"}>
         <h1 onClick={()=>{navigate("/")}} className="toplayTitle">toplay</h1>
 
-        <a className="toplayDiscord" href="">
+        <a className="toplayDiscord" href="https://discord.gg/9gerg3wesn">
         {dis ? <img className="toplayDiscordImg" src={dis} alt="" /> : ""}
         <p className="toplayDiscordTitle">discord</p>
         </a>
 
-        <Link className="toplayDeveloper" to={"/developer"}>
+        <Link className="toplayDeveloper" to={"https://yaserbahaa.onrender.com"}>
         {dev ? <img className="toplayDeveloperImg" src={dev} alt="" /> : ""}
         <p className="toplayDeveloperTitle">developer</p>
         </Link>
